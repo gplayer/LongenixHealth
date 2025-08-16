@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Existing Client Reports - Longenix Health</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <button onclick="window.history.back()" class="mr-4 p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition duration-300">
+                        <i class="fas fa-arrow-left text-xl"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold">Existing Client Reports</h1>
+                </div>
+                <div class="text-sm">
+                    <span id="selectedCountry" class="bg-white bg-opacity-20 px-3 py-1 rounded-full"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Search Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Search Client Reports</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Client Name</label>
+                    <input type="text" id="clientName" placeholder="Enter client name..." 
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+                    <select id="dateRange" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="all">All Time</option>
+                        <option value="30">Last 30 Days</option>
+                        <option value="90">Last 3 Months</option>
+                        <option value="365">Last Year</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button onclick="searchReports()" 
+                            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+                        <i class="fas fa-search mr-2"></i>Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-semibold">Client Reports</h2>
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm text-gray-600">Sort by:</span>
+                    <select id="sortBy" onchange="sortReports()" class="text-sm border border-gray-300 rounded px-2 py-1">
+                        <option value="date">Date</option>
+                        <option value="name">Client Name</option>
+                        <option value="risk">Risk Level</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Reports List -->
+            <div id="reportsList" class="space-y-4">
+                <!-- Sample reports will be inserted here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="text-center py-12 hidden">
+                <i class="fas fa-search text-4xl text-gray-400 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">No Reports Found</h3>
+                <p class="text-gray-500">Try adjusting your search criteria or check back later.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Report Actions Modal -->
+    <div id="reportModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold mb-2" id="modalClientName">Client Report</h3>
+                <p class="text-gray-600" id="modalReportDate">Assessment Date</p>
+            </div>
+            
+            <div class="space-y-3">
+                <button onclick="viewReport()" 
+                        class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+                    <i class="fas fa-eye mr-2"></i>View Report
+                </button>
+                <button onclick="compareReport()" 
+                        class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300">
+                    <i class="fas fa-chart-line mr-2"></i>Compare Progress
+                </button>
+                <button onclick="exportReport()" 
+                        class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition duration-300">
+                    <i class="fas fa-download mr-2"></i>Export PDF
+                </button>
+                <button onclick="closeModal()" 
+                        class="w-full bg-gray-300 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-400 transition duration-300">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample client reports data
+        const sampleReports = [
+            {
+                id: 1,
+                clientName: 'Sarah Johnson',
+                assessmentDate: '2024-01-15',
+                biologicalAge: 42.3,
+                chronologicalAge: 45,
+                overallRisk: 'Low',
+                riskScore: 15.2,
+                lastUpdated: '2024-01-15T10:30:00Z'
+            },
+            {
+                id: 2,
+                clientName: 'Michael Chen',
+                assessmentDate: '2024-01-10',
+                biologicalAge: 51.8,
+                chronologicalAge: 48,
+                overallRisk: 'Moderate',
+                riskScore: 28.7,
+                lastUpdated: '2024-01-10T14:20:00Z'
+            },
+            {
+                id: 3,
+                clientName: 'Emily Rodriguez',
+                assessmentDate: '2024-01-08',
+                biologicalAge: 36.2,
+                chronologicalAge: 38,
+                overallRisk: 'Low',
+                riskScore: 12.1,
+                lastUpdated: '2024-01-08T09:15:00Z'
+            },
+            {
+                id: 4,
+                clientName: 'David Thompson',
+                assessmentDate: '2024-01-05',
+                biologicalAge: 55.4,
+                chronologicalAge: 52,
+                overallRisk: 'High',
+                riskScore: 42.3,
+                lastUpdated: '2024-01-05T16:45:00Z'
+            },
+            {
+                id: 5,
+                clientName: 'Lisa Anderson',
+                assessmentDate: '2024-01-03',
+                biologicalAge: 39.7,
+                chronologicalAge: 41,
+                overallRisk: 'Low',
+                riskScore: 18.9,
+                lastUpdated: '2024-01-03T11:30:00Z'
+            }
+        ];
+
+        let currentReports = [...sampleReports];
+        let selectedReport = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCountryInfo();
+            displayReports(currentReports);
+        });
+
+        function loadCountryInfo() {
+            const savedAuth = sessionStorage.getItem('longenix_auth');
+            if (savedAuth) {
+                const authData = JSON.parse(savedAuth);
+                document.getElementById('selectedCountry').textContent = authData.country;
+            }
+        }
+
+        function searchReports() {
+            const clientName = document.getElementById('clientName').value.toLowerCase();
+            const dateRange = document.getElementById('dateRange').value;
+            
+            let filteredReports = [...sampleReports];
+
+            // Filter by client name
+            if (clientName.trim()) {
+                filteredReports = filteredReports.filter(report => 
+                    report.clientName.toLowerCase().includes(clientName)
+                );
+            }
+
+            // Filter by date range
+            if (dateRange !== 'all') {
+                const daysAgo = parseInt(dateRange);
+                const cutoffDate = new Date();
+                cutoffDate.setDate(cutoffDate.getDate() - daysAgo);
+                
+                filteredReports = filteredReports.filter(report => 
+                    new Date(report.assessmentDate) >= cutoffDate
+                );
+            }
+
+            currentReports = filteredReports;
+            displayReports(currentReports);
+        }
+
+        function sortReports() {
+            const sortBy = document.getElementById('sortBy').value;
+            
+            currentReports.sort((a, b) => {
+                switch(sortBy) {
+                    case 'name':
+                        return a.clientName.localeCompare(b.clientName);
+                    case 'risk':
+                        return b.riskScore - a.riskScore;
+                    case 'date':
+                    default:
+                        return new Date(b.assessmentDate) - new Date(a.assessmentDate);
+                }
+            });
+            
+            displayReports(currentReports);
+        }
+
+        function displayReports(reports) {
+            const reportsList = document.getElementById('reportsList');
+            const noResults = document.getElementById('noResults');
+
+            if (reports.length === 0) {
+                reportsList.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            
+            reportsList.innerHTML = reports.map(report => `
+                <div class="border border-gray-200 rounded-lg p-6 card-hover cursor-pointer" 
+                     onclick="openReportModal(${report.id})">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-lg font-semibold text-gray-800">${report.clientName}</h3>
+                                <span class="text-sm text-gray-500">${formatDate(report.assessmentDate)}</span>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-4 gap-4 mt-4">
+                                <div class="text-center">
+                                    <p class="text-sm text-gray-600">Biological Age</p>
+                                    <p class="text-xl font-bold ${getBiologicalAgeColor(report.biologicalAge, report.chronologicalAge)}">${report.biologicalAge} years</p>
+                                    <p class="text-xs text-gray-500">vs ${report.chronologicalAge} chronological</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-gray-600">Overall Risk</p>
+                                    <p class="text-lg font-semibold ${getRiskColor(report.overallRisk)}">${report.overallRisk}</p>
+                                    <p class="text-xs text-gray-500">${report.riskScore}% score</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-gray-600">Status</p>
+                                    <p class="text-sm font-medium text-green-600"><i class="fas fa-check-circle mr-1"></i>Complete</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-gray-600">Actions</p>
+                                    <div class="text-sm space-x-2">
+                                        <i class="fas fa-eye text-blue-600 hover:text-blue-800 cursor-pointer" title="View Report"></i>
+                                        <i class="fas fa-chart-line text-green-600 hover:text-green-800 cursor-pointer" title="Compare"></i>
+                                        <i class="fas fa-download text-purple-600 hover:text-purple-800 cursor-pointer" title="Export"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+
+        function getBiologicalAgeColor(bioAge, chronoAge) {
+            const diff = bioAge - chronoAge;
+            if (diff <= -3) return 'text-green-600';
+            if (diff <= 0) return 'text-green-500';
+            if (diff <= 3) return 'text-yellow-600';
+            return 'text-red-600';
+        }
+
+        function getRiskColor(risk) {
+            switch(risk.toLowerCase()) {
+                case 'low': return 'text-green-600';
+                case 'moderate': return 'text-yellow-600';
+                case 'high': return 'text-red-600';
+                default: return 'text-gray-600';
+            }
+        }
+
+        function openReportModal(reportId) {
+            selectedReport = currentReports.find(r => r.id === reportId);
+            if (selectedReport) {
+                document.getElementById('modalClientName').textContent = selectedReport.clientName;
+                document.getElementById('modalReportDate').textContent = `Assessment: ${formatDate(selectedReport.assessmentDate)}`;
+                document.getElementById('reportModal').classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('reportModal').classList.add('hidden');
+            selectedReport = null;
+        }
+
+        function viewReport() {
+            if (selectedReport) {
+                // Store report data for viewing
+                sessionStorage.setItem('selected_report', JSON.stringify(selectedReport));
+                window.location.href = './sample-report.html?existing=true';
+            }
+            closeModal();
+        }
+
+        function compareReport() {
+            if (selectedReport) {
+                alert(`Compare functionality for ${selectedReport.clientName} would show progress tracking and historical comparisons. This feature will be implemented in the full system.`);
+            }
+            closeModal();
+        }
+
+        function exportReport() {
+            if (selectedReport) {
+                alert(`Export functionality for ${selectedReport.clientName} would generate and download a PDF report. This feature will be implemented in the full system.`);
+            }
+            closeModal();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('reportModal').addEventListener('click', (e) => {
+            if (e.target.id === 'reportModal') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

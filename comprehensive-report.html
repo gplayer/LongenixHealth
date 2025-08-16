@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assessment Report - Longenix Health</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div class="gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-6 py-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold mb-2">Comprehensive Health Assessment Report</h1>
+                    <p class="text-blue-100">Generated on: <span id="reportDate"></span></p>
+                    <p class="text-sm text-blue-200 mt-2">
+                        Dr. Graham Player, Ph.D — Professional Healthcare Innovation Consultant – Longenix Health — Predict • Prevent • Persist
+                    </p>
+                </div>
+                <div class="text-right">
+                    <a href="index.html" class="bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30 transition mr-2">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <button onclick="window.print()" class="bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30 transition">
+                        <i class="fas fa-print mr-2"></i>Print
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>1. Executive Summary</h2>
+            </div>
+            
+            <!-- Key Metrics Dashboard -->
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 text-center">
+                    <i class="fas fa-dna text-3xl text-blue-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800 mb-2">Biological Age</h3>
+                    <p class="text-3xl font-bold text-blue-600">42.3</p>
+                    <p class="text-sm text-gray-600">vs 45 chronological</p>
+                    <span class="inline-block mt-2 px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
+                        2.7 years younger
+                    </span>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 text-center">
+                    <i class="fas fa-shield-alt text-3xl text-green-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800 mb-2">Overall Risk</h3>
+                    <p class="text-3xl font-bold text-green-600">Low</p>
+                    <p class="text-sm text-gray-600">7 categories assessed</p>
+                    <span class="inline-block mt-2 px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
+                        Excellent
+                    </span>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 text-center">
+                    <i class="fas fa-heartbeat text-3xl text-purple-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800 mb-2">Health Score</h3>
+                    <p class="text-3xl font-bold text-purple-600">84/100</p>
+                    <p class="text-sm text-gray-600">12 systems analyzed</p>
+                    <span class="inline-block mt-2 px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold">
+                        Very Good
+                    </span>
+                </div>
+
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 text-center">
+                    <i class="fas fa-lightbulb text-3xl text-orange-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800 mb-2">Action Items</h3>
+                    <p class="text-3xl font-bold text-orange-600">28</p>
+                    <p class="text-sm text-gray-600">personalized protocols</p>
+                    <span class="inline-block mt-2 px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-semibold">
+                        Comprehensive
+                    </span>
+                </div>
+            </div>
+
+            <!-- Critical Findings -->
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                <div class="flex">
+                    <i class="fas fa-exclamation-triangle text-yellow-400 mr-3 mt-1"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-yellow-800">Key Recommendations</h3>
+                        <ul class="text-yellow-700 mt-2 space-y-1">
+                            <li>• Continue current exercise regimen - excellent cardiovascular health</li>
+                            <li>• Consider vitamin D supplementation (current level: 28 ng/mL)</li>
+                            <li>• Monitor stress levels - cortisol slightly elevated</li>
+                            <li>• Schedule follow-up in 6 months for progress evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biological Age Assessment -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-dna"></i>
+                <h2>2. Biological Age Assessment</h2>
+            </div>
+
+            <!-- Age Comparison Chart -->
+            <div class="age-comparison mb-8">
+                <div class="age-item">
+                    <div class="age-value age-chronological">45.0</div>
+                    <div class="age-label">Chronological Age</div>
+                </div>
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-arrow-right text-2xl text-gray-400"></i>
+                </div>
+                <div class="age-item">
+                    <div class="age-value age-biological">42.3</div>
+                    <div class="age-label">Biological Age</div>
+                </div>
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-equals text-2xl text-gray-400"></i>
+                </div>
+                <div class="age-item">
+                    <div class="age-value age-difference">-2.7</div>
+                    <div class="age-label">Years Difference</div>
+                </div>
+            </div>
+
+            <!-- Individual Age Calculations -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white border rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-microscope text-blue-600 mr-2"></i>
+                        Phenotypic Age
+                    </h3>
+                    <div class="text-3xl font-bold text-blue-600 mb-2">41.8 years</div>
+                    <p class="text-sm text-gray-600 mb-4">Based on 9 clinical biomarkers (Levine et al. 2018)</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Albumin:</span>
+                            <span class="font-semibold">4.2 g/dL</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Creatinine:</span>
+                            <span class="font-semibold">0.9 mg/dL</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Glucose:</span>
+                            <span class="font-semibold">95 mg/dL</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>C-Reactive Protein:</span>
+                            <span class="font-semibold">1.2 mg/L</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-calculator text-green-600 mr-2"></i>
+                        Klemera-Doubal Method
+                    </h3>
+                    <div class="text-3xl font-bold text-green-600 mb-2">42.1 years</div>
+                    <p class="text-sm text-gray-600 mb-4">Multiple biomarker integration approach</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Hemoglobin:</span>
+                            <span class="font-semibold">14.2 g/dL</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Total Cholesterol:</span>
+                            <span class="font-semibold">185 mg/dL</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Systolic BP:</span>
+                            <span class="font-semibold">118 mmHg</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Weight integration:</span>
+                            <span class="font-semibold">Optimal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-fire text-orange-600 mr-2"></i>
+                        Metabolic Age
+                    </h3>
+                    <div class="text-3xl font-bold text-orange-600 mb-2">43.5 years</div>
+                    <p class="text-sm text-gray-600 mb-4">Metabolic health assessment</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>HOMA-IR:</span>
+                            <span class="font-semibold">1.8</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Triglycerides:</span>
+                            <span class="font-semibold">128 mg/dL</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>HDL Cholesterol:</span>
+                            <span class="font-semibold">58 mg/dL</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Metabolic Score:</span>
+                            <span class="font-semibold">Good</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-dna text-purple-600 mr-2"></i>
+                        Telomere Age
+                    </h3>
+                    <div class="text-3xl font-bold text-purple-600 mb-2">40.8 years</div>
+                    <p class="text-sm text-gray-600 mb-4">Cellular aging assessment</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Exercise Factor:</span>
+                            <span class="font-semibold text-green-600">Excellent</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Stress Level:</span>
+                            <span class="font-semibold text-yellow-600">Moderate</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Smoking Status:</span>
+                            <span class="font-semibold text-green-600">Never</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Telomere Protection:</span>
+                            <span class="font-semibold">Very Good</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disease Risk Assessment -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>3. Disease Risk Assessment</h2>
+            </div>
+
+            <div class="risk-grid">
+                <!-- Cardiovascular Risk -->
+                <div class="risk-card">
+                    <div class="risk-title">
+                        <i class="fas fa-heart text-red-500"></i>
+                        Cardiovascular Disease
+                    </div>
+                    <div class="risk-percentage text-green-600">4.2%</div>
+                    <div class="risk-level risk-low">Low Risk</div>
+                    <div class="mt-4 text-sm text-gray-600">
+                        <p><strong>10-year ASCVD risk:</strong> 4.2% (target: <10%)</p>
+                        <p><strong>Key factors:</strong> Excellent BP, good cholesterol profile</p>
+                        <p><strong>Recommendation:</strong> Continue current lifestyle</p>
+                    </div>
+                </div>
+
+                <!-- Diabetes Risk -->
+                <div class="risk-card">
+                    <div class="risk-title">
+                        <i class="fas fa-tint text-blue-500"></i>
+                        Type 2 Diabetes
+                    </div>
+                    <div class="risk-percentage text-green-600">2.8%</div>
+                    <div class="risk-level risk-low">Low Risk</div>
+                    <div class="mt-4 text-sm text-gray-600">
+                        <p><strong>FINDRISC Score:</strong> 4/26 (Low risk)</p>
+                        <p><strong>Key factors:</strong> Normal glucose, healthy weight</p>
+                        <p><strong>Recommendation:</strong> Annual screening</p>
+                    </div>
+                </div>
+
+                <!-- Metabolic Syndrome -->
+                <div class="risk-card">
+                    <div class="risk-title">
+                        <i class="fas fa-chart-pie text-orange-500"></i>
+                        Metabolic Syndrome
+                    </div>
+                    <div class="risk-percentage text-green-600">0/5</div>
+                    <div class="risk-level risk-low">Not Present</div>
+                    <div class="mt-4 text-sm text-gray-600">
+                        <p><strong>Components met:</strong> 0 of 5 criteria</p>
+                        <p><strong>Waist:</strong> Normal, <strong>BP:</strong> Normal</p>
+                        <p><strong>Status:</strong> Excellent metabolic health</p>
+                    </div>
+                </div>
+
+                <!-- Kidney Disease -->
+                <div class="risk-card">
+                    <div class="risk-title">
+                        <i class="fas fa-kidneys text-green-500"></i>
+                        Chronic Kidney Disease
+                    </div>
+                    <div class="risk-percentage text-green-600">Low</div>
+                    <div class="risk-level risk-low">Low Risk</div>
+                    <div class="mt-4 text-sm text-gray-600">
+                        <p><strong>eGFR:</strong> >90 mL/min/1.73m² (Excellent)</p>
+                        <p><strong>Proteinuria:</strong> Negative</p>
+                        <p><strong>Recommendation:</strong> Routine monitoring</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mental Health Assessment -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-brain"></i>
+                <h2>4. Mental Health Assessment</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- PHQ-9 Depression Screening -->
+                <div class="bg-white border rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-mood text-blue-600 mr-2"></i>
+                        Depression Screening (PHQ-9)
+                    </h3>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-green-600">3/27</div>
+                        <div class="text-sm text-gray-600">Minimal depression</div>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Little interest or pleasure:</span>
+                            <span>0 - Not at all</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Feeling down/depressed:</span>
+                            <span>1 - Several days</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sleep difficulties:</span>
+                            <span>2 - More than half days</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                        <p class="text-sm text-green-800">
+                            <strong>Interpretation:</strong> Score indicates minimal depression symptoms. 
+                            Continue monitoring and maintain healthy lifestyle practices.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- GAD-7 Anxiety Screening -->
+                <div class="bg-white border rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-heart-pulse text-purple-600 mr-2"></i>
+                        Anxiety Screening (GAD-7)
+                    </h3>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-yellow-600">8/21</div>
+                        <div class="text-sm text-gray-600">Mild anxiety</div>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Feeling nervous/anxious:</span>
+                            <span>2 - More than half days</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Unable to control worrying:</span>
+                            <span>1 - Several days</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Trouble relaxing:</span>
+                            <span>2 - More than half days</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-yellow-50 rounded-lg">
+                        <p class="text-sm text-yellow-800">
+                            <strong>Recommendation:</strong> Consider stress management techniques. 
+                            Monitor for 4-6 weeks. If symptoms persist or worsen, consider professional consultation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Disclaimer -->
+        <div class="mt-12 p-6 bg-gray-100 rounded-lg border">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                Medical Disclaimer
+            </h3>
+            <p class="text-sm text-gray-700 leading-relaxed">
+                This assessment report is for educational and informational purposes only and is not intended to replace 
+                professional medical advice, diagnosis, or treatment. The calculations and risk assessments are based on 
+                established scientific algorithms but should not be used as the sole basis for medical decisions. 
+                Always seek the advice of your physician or other qualified health provider with any questions you may 
+                have regarding a medical condition. Never disregard professional medical advice or delay in seeking it 
+                because of something you have read in this report.
+            </p>
+            <div class="mt-4 pt-4 border-t border-gray-300">
+                <p class="text-sm font-semibold text-gray-800">
+                    Dr. Graham Player, Ph.D — Professional Healthcare Innovation Consultant – Longenix Health
+                </p>
+                <p class="text-sm text-gray-600">Predict • Prevent • Persist</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Set report date
+        document.getElementById('reportDate').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Load assessment data if available
+        const assessmentData = sessionStorage.getItem('assessment_data');
+        if (assessmentData) {
+            const data = JSON.parse(assessmentData);
+            console.log('Assessment data loaded:', data);
+            // In a full implementation, this would populate the report with actual calculated values
+        }
+    </script>
+</body>
+</html>

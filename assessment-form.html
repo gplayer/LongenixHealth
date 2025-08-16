@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assessment Form - Longenix Health</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div class="gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-6 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold">Health Assessment Form</h1>
+                    <p class="text-blue-100">Comprehensive health evaluation</p>
+                </div>
+                <a href="index.html" class="bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30 transition">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="bg-white py-4">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-sm font-medium text-gray-700">Step <span id="currentStep">1</span> of 8</span>
+                <span class="text-sm text-gray-500"><span id="progressPercent">12</span>% Complete</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill" style="width: 12%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="max-w-4xl mx-auto px-6 py-8">
+        <form id="assessmentForm" class="bg-white rounded-lg shadow-lg p-8">
+            
+            <!-- Step 1: Demographics -->
+            <div id="step1" class="assessment-step">
+                <div class="text-center mb-8">
+                    <i class="fas fa-user text-4xl text-blue-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Personal Information</h2>
+                    <p class="text-gray-600">Basic demographic and contact information</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" name="fullName" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth *</label>
+                        <input type="date" name="dateOfBirth" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Gender *</label>
+                        <select name="gender" class="form-select" required>
+                            <option value="">Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="email" class="form-input" placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" name="phone" class="form-input" placeholder="+1 (555) 123-4567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Country *</label>
+                        <select name="country" class="form-select" required>
+                            <option value="US">United States</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Philippines">Philippines</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Biometrics -->
+            <div id="step2" class="assessment-step hidden">
+                <div class="text-center mb-8">
+                    <i class="fas fa-ruler text-4xl text-green-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Biometric Measurements</h2>
+                    <p class="text-gray-600">Physical measurements and vital statistics</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label class="form-label">Height (cm) *</label>
+                        <input type="number" name="height" class="form-input" placeholder="170" min="100" max="250" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Weight (kg) *</label>
+                        <input type="number" name="weight" class="form-input" placeholder="70" min="30" max="300" step="0.1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Waist Circumference (cm)</label>
+                        <input type="number" name="waist" class="form-input" placeholder="85" min="50" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Hip Circumference (cm)</label>
+                        <input type="number" name="hip" class="form-input" placeholder="95" min="60" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Systolic Blood Pressure (mmHg)</label>
+                        <input type="number" name="systolicBP" class="form-input" placeholder="120" min="60" max="250">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Diastolic Blood Pressure (mmHg)</label>
+                        <input type="number" name="diastolicBP" class="form-input" placeholder="80" min="40" max="150">
+                    </div>
+                </div>
+
+                <!-- Calculated Values Display -->
+                <div id="calculatedValues" class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <h3 class="text-lg font-semibold text-blue-800 mb-3">Calculated Values</h3>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-600">BMI:</span>
+                            <span id="bmiValue" class="font-semibold ml-2">--</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Waist-Hip Ratio:</span>
+                            <span id="whrValue" class="font-semibold ml-2">--</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">BP Classification:</span>
+                            <span id="bpClassification" class="font-semibold ml-2">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Navigation -->
+            <div class="flex justify-between items-center mt-8 pt-6 border-t">
+                <button type="button" id="prevBtn" onclick="changeStep(-1)" 
+                        class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition hidden">
+                    <i class="fas fa-arrow-left mr-2"></i>Previous
+                </button>
+                
+                <button type="button" id="nextBtn" onclick="changeStep(1)" 
+                        class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    Next<i class="fas fa-arrow-right ml-2"></i>
+                </button>
+                
+                <button type="submit" id="submitBtn" 
+                        class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition hidden">
+                    <i class="fas fa-check mr-2"></i>Complete Assessment
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let currentStep = 1;
+        const totalSteps = 8;
+        
+        // Auto-calculate BMI and WHR
+        function updateCalculations() {
+            const height = parseFloat(document.querySelector('[name="height"]').value) || 0;
+            const weight = parseFloat(document.querySelector('[name="weight"]').value) || 0;
+            const waist = parseFloat(document.querySelector('[name="waist"]').value) || 0;
+            const hip = parseFloat(document.querySelector('[name="hip"]').value) || 0;
+            const systolic = parseInt(document.querySelector('[name="systolicBP"]').value) || 0;
+            const diastolic = parseInt(document.querySelector('[name="diastolicBP"]').value) || 0;
+            
+            // Calculate BMI
+            if (height > 0 && weight > 0) {
+                const heightM = height / 100;
+                const bmi = (weight / (heightM * heightM)).toFixed(1);
+                document.getElementById('bmiValue').textContent = bmi;
+            }
+            
+            // Calculate Waist-Hip Ratio
+            if (waist > 0 && hip > 0) {
+                const whr = (waist / hip).toFixed(2);
+                document.getElementById('whrValue').textContent = whr;
+            }
+            
+            // Blood Pressure Classification
+            if (systolic > 0 && diastolic > 0) {
+                let classification = 'Normal';
+                if (systolic >= 180 || diastolic >= 110) classification = 'Hypertensive Crisis';
+                else if (systolic >= 140 || diastolic >= 90) classification = 'Stage 2 Hypertension';
+                else if (systolic >= 130 || diastolic >= 80) classification = 'Stage 1 Hypertension';
+                else if (systolic >= 120) classification = 'Elevated';
+                
+                document.getElementById('bpClassification').textContent = classification;
+            }
+        }
+        
+        // Add event listeners for auto-calculation
+        document.addEventListener('DOMContentLoaded', function() {
+            const calcInputs = ['height', 'weight', 'waist', 'hip', 'systolicBP', 'diastolicBP'];
+            calcInputs.forEach(name => {
+                const input = document.querySelector(`[name="${name}"]`);
+                if (input) {
+                    input.addEventListener('input', updateCalculations);
+                }
+            });
+        });
+        
+        function changeStep(direction) {
+            const currentStepEl = document.getElementById(`step${currentStep}`);
+            const newStep = currentStep + direction;
+            
+            if (newStep < 1 || newStep > totalSteps) return;
+            
+            // Validate current step before proceeding
+            if (direction > 0 && !validateStep(currentStep)) {
+                return;
+            }
+            
+            // Hide current step
+            currentStepEl.classList.add('hidden');
+            
+            // Show new step
+            currentStep = newStep;
+            const newStepEl = document.getElementById(`step${currentStep}`);
+            if (newStepEl) {
+                newStepEl.classList.remove('hidden');
+            }
+            
+            // Update progress
+            updateProgress();
+            updateNavigation();
+        }
+        
+        function validateStep(step) {
+            const stepEl = document.getElementById(`step${step}`);
+            const requiredInputs = stepEl.querySelectorAll('[required]');
+            
+            for (let input of requiredInputs) {
+                if (!input.value.trim()) {
+                    input.focus();
+                    alert(`Please fill in the required field: ${input.previousElementSibling.textContent}`);
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        function updateProgress() {
+            const progressPercent = Math.round((currentStep / totalSteps) * 100);
+            document.getElementById('currentStep').textContent = currentStep;
+            document.getElementById('progressPercent').textContent = progressPercent;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+        }
+        
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Show/hide previous button
+            if (currentStep > 1) {
+                prevBtn.classList.remove('hidden');
+            } else {
+                prevBtn.classList.add('hidden');
+            }
+            
+            // Show/hide next/submit buttons
+            if (currentStep === totalSteps) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+        }
+        
+        // Form submission
+        document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateStep(currentStep)) return;
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Add calculated values
+            data.calculatedBMI = document.getElementById('bmiValue').textContent;
+            data.calculatedWHR = document.getElementById('whrValue').textContent;
+            data.bpClassification = document.getElementById('bpClassification').textContent;
+            
+            // Store data and redirect
+            sessionStorage.setItem('assessment_data', JSON.stringify(data));
+            
+            // Show loading and redirect to report
+            document.body.innerHTML = `
+                <div class="min-h-screen flex items-center justify-center bg-gray-50">
+                    <div class="text-center">
+                        <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Processing Your Assessment</h2>
+                        <p class="text-gray-600">Calculating biological age and disease risks...</p>
+                    </div>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                window.location.href = './comprehensive-report.html';
+            }, 3000);
+        });
+    </script>
+
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .assessment-step {
+            min-height: 400px;
+        }
+    </style>
+</body>
+</html>
