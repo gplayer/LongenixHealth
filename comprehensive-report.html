@@ -30,6 +30,10 @@
         .biomarker-elevated { color: #d97706; font-weight: 600; }
         .biomarker-high { color: #dc2626; font-weight: 600; }
         .chart-container { position: relative; height: 300px; margin: 1rem 0; }
+        .hallmark-item { border-left: 4px solid #3b82f6; padding-left: 1rem; margin-bottom: 1rem; }
+        .recommendation-high { border-left: 4px solid #ef4444; }
+        .recommendation-medium { border-left: 4px solid #f59e0b; }
+        .recommendation-low { border-left: 4px solid #10b981; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -159,121 +163,92 @@
             </div>
         </div>
 
-        <!-- Section 2: Biological Age Assessment -->
+        <!-- Section 2: Patient Demographics & Biometrics -->
         <div class="report-section">
             <div class="report-header">
-                <i class="fas fa-dna"></i>
-                <h2>2. Biological Age Assessment</h2>
+                <i class="fas fa-user-md"></i>
+                <h2>2. Patient Demographics & Biometrics</h2>
             </div>
             <div class="report-content">
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Biological Age Methods -->
+                    <!-- Demographics -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Multiple Algorithm Analysis</h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
-                                <div>
-                                    <h4 class="font-semibold text-blue-800">Phenotypic Age</h4>
-                                    <p class="text-sm text-gray-600">9-biomarker mortality predictor</p>
+                        <h3 class="text-lg font-semibold mb-4">Demographics</h3>
+                        <div class="bg-white border rounded-lg p-6">
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Age:</span>
+                                    <span class="font-semibold">45 years</span>
                                 </div>
-                                <div class="text-right">
-                                    <p class="text-2xl font-bold text-blue-600" id="phenotypicAge">42.3</p>
-                                    <p class="text-xs text-gray-500">years</p>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Gender:</span>
+                                    <span class="font-semibold">Female</span>
                                 </div>
-                            </div>
-
-                            <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
-                                <div>
-                                    <h4 class="font-semibold text-green-800">Klemera-Doubal</h4>
-                                    <p class="text-sm text-gray-600">Multi-biomarker composite</p>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Ethnicity:</span>
+                                    <span class="font-semibold">Caucasian</span>
                                 </div>
-                                <div class="text-right">
-                                    <p class="text-2xl font-bold text-green-600" id="klemeraDoubalAge">43.1</p>
-                                    <p class="text-xs text-gray-500">years</p>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Country:</span>
+                                    <span class="font-semibold">United States</span>
                                 </div>
-                            </div>
-
-                            <div class="flex justify-between items-center p-4 bg-purple-50 rounded-lg">
-                                <div>
-                                    <h4 class="font-semibold text-purple-800">Metabolic Age</h4>
-                                    <p class="text-sm text-gray-600">Metabolic function analysis</p>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Education:</span>
+                                    <span class="font-semibold">College Graduate</span>
                                 </div>
-                                <div class="text-right">
-                                    <p class="text-2xl font-bold text-purple-600" id="metabolicAge">41.8</p>
-                                    <p class="text-xs text-gray-500">years</p>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between items-center p-4 bg-orange-50 rounded-lg">
-                                <div>
-                                    <h4 class="font-semibold text-orange-800">Telomere Age</h4>
-                                    <p class="text-sm text-gray-600">Cellular aging estimate</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-2xl font-bold text-orange-600" id="telomereAge">42.7</p>
-                                    <p class="text-xs text-gray-500">years</p>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Occupation:</span>
+                                    <span class="font-semibold">Marketing Manager</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Age Comparison Chart -->
+                    <!-- Biometrics -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Age Comparison Analysis</h3>
-                        <div class="chart-container">
-                            <canvas id="biologicalAgeChart"></canvas>
-                        </div>
-                        <div class="mt-4 p-4 bg-gray-50 rounded-lg">
-                            <h4 class="font-semibold mb-2">Interpretation</h4>
-                            <p class="text-sm text-gray-700" id="biologicalAgeInterpretation">
-                                Your biological age averaging 42.5 years represents excellent aging trajectory, indicating optimal cellular function and metabolic health. This 2.5-year advantage suggests effective lifestyle practices and genetic resilience.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Biomarkers Used in Calculations -->
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold mb-4">Key Biomarkers in Biological Age Calculations</h3>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="bg-white border rounded-lg p-4">
-                            <h4 class="font-semibold mb-3 text-gray-800">Phenotypic Age Markers</h4>
-                            <ul class="text-sm space-y-1 text-gray-600">
-                                <li>• Albumin: <span class="biomarker-normal">4.2 g/dL</span></li>
-                                <li>• Creatinine: <span class="biomarker-normal">0.9 mg/dL</span></li>
-                                <li>• Glucose: <span class="biomarker-normal">92 mg/dL</span></li>
-                                <li>• C-Reactive Protein: <span class="biomarker-normal">1.8 mg/L</span></li>
-                                <li>• Lymphocyte %: <span class="biomarker-normal">28%</span></li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white border rounded-lg p-4">
-                            <h4 class="font-semibold mb-3 text-gray-800">Metabolic Markers</h4>
-                            <ul class="text-sm space-y-1 text-gray-600">
-                                <li>• HbA1c: <span class="biomarker-normal">5.4%</span></li>
-                                <li>• Insulin: <span class="biomarker-normal">8.2 μU/mL</span></li>
-                                <li>• Triglycerides: <span class="biomarker-normal">110 mg/dL</span></li>
-                                <li>• HDL: <span class="biomarker-normal">58 mg/dL</span></li>
-                                <li>• Waist-Hip Ratio: <span class="biomarker-normal">0.87</span></li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white border rounded-lg p-4">
-                            <h4 class="font-semibold mb-3 text-gray-800">Cellular Health</h4>
-                            <ul class="text-sm space-y-1 text-gray-600">
-                                <li>• White Blood Cells: <span class="biomarker-normal">6.8 K/μL</span></li>
-                                <li>• Red Blood Cells: <span class="biomarker-normal">4.5 M/μL</span></li>
-                                <li>• Hemoglobin: <span class="biomarker-normal">13.5 g/dL</span></li>
-                                <li>• Platelets: <span class="biomarker-normal">285 K/μL</span></li>
-                                <li>• Mean Cell Volume: <span class="biomarker-normal">89 fL</span></li>
-                            </ul>
+                        <h3 class="text-lg font-semibold mb-4">Biometric Measurements</h3>
+                        <div class="bg-white border rounded-lg p-6">
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Height:</span>
+                                    <span class="font-semibold">165 cm (5'5")</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Weight:</span>
+                                    <span class="font-semibold">68 kg (150 lbs)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">BMI:</span>
+                                    <span class="font-semibold text-yellow-600">25.0 (Borderline)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Waist Circumference:</span>
+                                    <span class="font-semibold text-yellow-600">85 cm</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Hip Circumference:</span>
+                                    <span class="font-semibold">98 cm</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Waist-Hip Ratio:</span>
+                                    <span class="font-semibold text-green-600">0.87 (Normal)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Blood Pressure:</span>
+                                    <span class="font-semibold text-yellow-600">125/82 mmHg (Elevated)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Resting Heart Rate:</span>
+                                    <span class="font-semibold text-green-600">68 bpm (Good)</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: Disease Risk Assessment -->
+        <!-- Section 3: Disease Risk Assessment (CORRECTED) -->
         <div class="report-section">
             <div class="report-header">
                 <i class="fas fa-shield-alt"></i>
@@ -306,7 +281,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-sm text-gray-600">Blood Pressure:</span>
-                                <span class="font-semibold text-green-600" id="bpStatus">125/82 (Elevated)</span>
+                                <span class="font-semibold text-yellow-600" id="bpStatus">125/82 (Elevated)</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-sm text-gray-600">Total Cholesterol:</span>
@@ -438,38 +413,74 @@
                         </div>
                     </div>
 
-                    <!-- Osteoporosis Risk -->
+                    <!-- Kidney Disease Risk (CORRECTED - ADDED) -->
                     <div class="bg-white border rounded-lg p-6">
                         <div class="flex items-center justify-between mb-4">
                             <h4 class="text-lg font-semibold flex items-center">
-                                <i class="fas fa-bone text-gray-500 mr-2"></i>
-                                Osteoporosis
+                                <i class="fas fa-kidneys text-teal-500 mr-2"></i>
+                                Kidney Disease
                             </h4>
-                            <span class="risk-moderate" id="osteoporosisRiskLevel">Moderate Risk</span>
+                            <span class="risk-low" id="kidneyRiskLevel">Low Risk</span>
                         </div>
                         <div class="space-y-3">
                             <div class="flex justify-between">
-                                <span class="text-sm text-gray-600">10-Year Fracture Risk:</span>
-                                <span class="font-semibold" id="fraxScore">8.2%</span>
+                                <span class="text-sm text-gray-600">eGFR:</span>
+                                <span class="font-semibold text-green-600">95 mL/min/1.73m²</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-sm text-gray-600">Vitamin D:</span>
-                                <span class="font-semibold text-yellow-600">32 ng/mL (Suboptimal)</span>
+                                <span class="text-sm text-gray-600">Creatinine:</span>
+                                <span class="font-semibold text-green-600">0.9 mg/dL (Normal)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Urine Protein:</span>
+                                <span class="font-semibold text-green-600">Negative</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Blood Pressure:</span>
+                                <span class="font-semibold text-yellow-600">125/82 (Monitor)</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-sm text-green-800">Excellent kidney function with normal filtration rate.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stroke Risk -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold flex items-center">
+                                <i class="fas fa-brain-circuit text-indigo-500 mr-2"></i>
+                                Stroke Risk
+                            </h4>
+                            <span class="risk-low" id="strokeRiskLevel">Low Risk</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">10-Year Stroke Risk:</span>
+                                <span class="font-semibold" id="strokeRisk">4.2%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Blood Pressure:</span>
+                                <span class="font-semibold text-yellow-600">125/82 (Elevated)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Atrial Fibrillation:</span>
+                                <span class="font-semibold text-green-600">No</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-sm text-gray-600">Family History:</span>
-                                <span class="font-semibold text-yellow-600">Maternal Grandmother</span>
+                                <span class="font-semibold text-yellow-600">Maternal Grandfather</span>
                             </div>
                         </div>
-                        <div class="mt-4 p-3 bg-yellow-50 rounded">
-                            <p class="text-sm text-yellow-800">Consider DEXA scan and vitamin D optimization.</p>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-sm text-green-800">Low stroke risk with excellent preventive measures.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Section 4: Mental Health Assessment -->
+        <!-- Section 4: Mental Health Assessment (CORRECTED - Added Body Mind Spirit) -->
         <div class="report-section">
             <div class="report-header">
                 <i class="fas fa-brain"></i>
@@ -546,7 +557,109 @@
                     </div>
                 </div>
 
-                <!-- Stress and Sleep Analysis -->
+                <!-- Body Mind Spirit Assessment (CORRECTED - ADDED) -->
+                <div class="mt-8 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-6 flex items-center">
+                        <i class="fas fa-infinity text-purple-600 mr-2"></i>
+                        Body Mind Spirit Integration
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="bg-white rounded-lg p-6 shadow-sm">
+                                <i class="fas fa-running text-4xl text-green-600 mb-4"></i>
+                                <h4 class="font-semibold text-green-800 mb-3">Body</h4>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Physical Vitality:</span>
+                                        <span class="font-medium text-green-600">8.5/10</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Energy Levels:</span>
+                                        <span class="font-medium text-green-600">High</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Body Awareness:</span>
+                                        <span class="font-medium text-green-600">Good</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Movement Practice:</span>
+                                        <span class="font-medium text-green-600">Regular</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-green-700 mt-3">Excellent physical foundation with strong vitality and energy management.</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="bg-white rounded-lg p-6 shadow-sm">
+                                <i class="fas fa-brain text-4xl text-blue-600 mb-4"></i>
+                                <h4 class="font-semibold text-blue-800 mb-3">Mind</h4>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Mental Clarity:</span>
+                                        <span class="font-medium text-blue-600">8.0/10</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Emotional Balance:</span>
+                                        <span class="font-medium text-blue-600">Good</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Stress Management:</span>
+                                        <span class="font-medium text-yellow-600">Moderate</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Focus & Attention:</span>
+                                        <span class="font-medium text-blue-600">Strong</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-blue-700 mt-3">Strong mental acuity with room for enhanced stress resilience techniques.</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="bg-white rounded-lg p-6 shadow-sm">
+                                <i class="fas fa-dove text-4xl text-purple-600 mb-4"></i>
+                                <h4 class="font-semibold text-purple-800 mb-3">Spirit</h4>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Life Purpose:</span>
+                                        <span class="font-medium text-purple-600">Clear</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Connection:</span>
+                                        <span class="font-medium text-purple-600">Strong</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Inner Peace:</span>
+                                        <span class="font-medium text-purple-600">7.5/10</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Mindfulness:</span>
+                                        <span class="font-medium text-yellow-600">Developing</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-purple-700 mt-3">Good spiritual foundation with opportunities for deeper mindfulness practices.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integration Score -->
+                    <div class="mt-6 bg-white rounded-lg p-4">
+                        <h4 class="font-semibold text-center mb-4">Overall Integration Score</h4>
+                        <div class="flex justify-center items-center space-x-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-purple-600">8.0</div>
+                                <p class="text-sm text-gray-600">out of 10</p>
+                                <p class="text-xs text-purple-600">Well-Balanced</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-center text-gray-700 mt-4">
+                            Excellent integration across body, mind, and spirit domains. Continue developing mindfulness and stress management practices for optimal holistic health.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sleep, Stress and Mood Analysis -->
                 <div class="mt-8 grid md:grid-cols-3 gap-6">
                     <div class="bg-blue-50 rounded-lg p-6 text-center">
                         <i class="fas fa-bed text-3xl text-blue-600 mb-3"></i>
@@ -602,281 +715,11 @@
             </div>
         </div>
 
-        <!-- Section 5: Family History Analysis -->
-        <div class="report-section page-break">
-            <div class="report-header">
-                <i class="fas fa-users"></i>
-                <h2>5. Family History Analysis</h2>
-            </div>
-            <div class="report-content">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Paternal Side -->
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4 text-blue-800">Paternal Family History</h3>
-                        
-                        <!-- Paternal Grandfather -->
-                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
-                            <h4 class="font-semibold text-blue-800 mb-2">Paternal Grandfather †</h4>
-                            <div class="text-sm space-y-1">
-                                <div><strong>Age at Death:</strong> 78 years</div>
-                                <div><strong>Cause:</strong> Heart attack</div>
-                                <div><strong>Conditions:</strong> Hypertension, Coronary artery disease</div>
-                                <div class="mt-2 text-blue-700">
-                                    <strong>Risk Impact:</strong> Moderate cardiovascular risk (+1.5 points)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Paternal Grandmother -->
-                        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
-                            <h4 class="font-semibold text-green-800 mb-2">Paternal Grandmother</h4>
-                            <div class="text-sm space-y-1">
-                                <div><strong>Current Age:</strong> 85 years (Living)</div>
-                                <div><strong>Conditions:</strong> Osteoporosis, Mild cognitive impairment</div>
-                                <div class="mt-2 text-green-700">
-                                    <strong>Risk Impact:</strong> Longevity genes (+0.5 points)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Father -->
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <h4 class="font-semibold text-yellow-800 mb-2">Father</h4>
-                            <div class="text-sm space-y-1">
-                                <div><strong>Current Age:</strong> 72 years (Living)</div>
-                                <div><strong>Conditions:</strong> Type 2 Diabetes, High cholesterol</div>
-                                <div class="mt-2 text-yellow-700">
-                                    <strong>Risk Impact:</strong> Diabetes risk (+1.0 points), Cardiovascular risk (+1.0 points)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Maternal Side -->
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4 text-pink-800">Maternal Family History</h3>
-                        
-                        <!-- Maternal Grandfather -->
-                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-                            <h4 class="font-semibold text-red-800 mb-2">Maternal Grandfather †</h4>
-                            <div class="text-sm space-y-1">
-                                <div><strong>Age at Death:</strong> 82 years</div>
-                                <div><strong>Cause:</strong> Stroke</div>
-                                <div><strong>Conditions:</strong> Hypertension, Atrial fibrillation</div>
-                                <div class="mt-2 text-red-700">
-                                    <strong>Risk Impact:</strong> Stroke risk (+1.0 points), Cardiovascular risk (+1.0 points)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Maternal Grandmother -->
-                        <div class="bg-pink-50 border-l-4 border-pink-400 p-4 mb-4">
-                            <h4 class="font-semibold text-pink-800 mb-2">Maternal Grandmother †</h4>
-                            <div class="text-sm space-y-1">
-                                <div><strong>Age at Death:</strong> 75 years</div>
-                                <div><strong>Cause:</strong> Breast cancer</div>
-                                <div><strong>Conditions:</strong> Breast cancer, Osteoporosis</div>
-                                <div class="mt-2 text-pink-700">
-                                    <strong>Risk Impact:</strong> Breast cancer risk (+2.0 points), Osteoporosis risk (+1.0 points)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mother -->
-                        <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-4">
-                            <h4 class="font-semibold text-purple-800 mb-2">Mother</h4>
-                            <div class="text-sm space-y-1">
-                                <div><strong>Current Age:</strong> 68 years (Living)</div>
-                                <div><strong>Conditions:</strong> Hypothyroidism, Osteoarthritis</div>
-                                <div class="mt-2 text-purple-700">
-                                    <strong>Risk Impact:</strong> Thyroid monitoring recommended
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Siblings -->
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold mb-4">Siblings</h3>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="bg-gray-50 border rounded-lg p-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Brother (47 years)</h4>
-                            <div class="text-sm text-gray-600">
-                                <div><strong>Health Status:</strong> Good</div>
-                                <div><strong>Known Conditions:</strong> None reported</div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 border rounded-lg p-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Sister (41 years)</h4>
-                            <div class="text-sm text-gray-600">
-                                <div><strong>Health Status:</strong> Fair</div>
-                                <div><strong>Known Conditions:</strong> Anxiety, PCOS</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Family Risk Summary -->
-                <div class="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
-                    <h3 class="text-lg font-semibold mb-4">Genetic Risk Assessment</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <h4 class="font-medium text-red-700 mb-2">Elevated Risk Areas</h4>
-                            <ul class="text-sm space-y-1">
-                                <li>• Breast Cancer</li>
-                                <li>• Cardiovascular Disease</li>
-                                <li>• Type 2 Diabetes</li>
-                                <li>• Osteoporosis</li>
-                            </ul>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="font-medium text-green-700 mb-2">Protective Factors</h4>
-                            <ul class="text-sm space-y-1">
-                                <li>• Longevity genes (Paternal)</li>
-                                <li>• No early-onset disease</li>
-                                <li>• Strong maternal longevity</li>
-                            </ul>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="font-medium text-blue-700 mb-2">Screening Recommendations</h4>
-                            <ul class="text-sm space-y-1">
-                                <li>• Annual mammograms</li>
-                                <li>• Cardiac stress test</li>
-                                <li>• DEXA scan</li>
-                                <li>• Diabetes screening</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 6: ATM Timeline -->
-        <div class="report-section">
-            <div class="report-header">
-                <i class="fas fa-timeline"></i>
-                <h2>6. ATM Timeline Assessment</h2>
-            </div>
-            <div class="report-content">
-                <div class="mb-6">
-                    <h3 class="text-lg font-semibold mb-4">Accidents, Traumas, and Major Medical Events</h3>
-                    <p class="text-gray-600 mb-6">Chronological assessment of significant health events and their potential impact on current and future health status.</p>
-                </div>
-
-                <!-- Timeline Events -->
-                <div class="relative">
-                    <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500"></div>
-                    
-                    <!-- Event 1: 2018 Car Accident -->
-                    <div class="relative flex items-start mb-8">
-                        <div class="absolute left-2 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white shadow"></div>
-                        <div class="ml-12 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg p-6 w-full">
-                            <div class="flex justify-between items-start mb-3">
-                                <h4 class="text-lg font-semibold text-yellow-800">Minor Car Accident</h4>
-                                <span class="text-sm text-gray-600 font-medium">2018 (Age 40)</span>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <h5 class="font-medium text-gray-800 mb-2">Event Details</h5>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li><strong>Type:</strong> Motor vehicle accident</li>
-                                        <li><strong>Severity:</strong> Minor</li>
-                                        <li><strong>Primary Impact:</strong> Neck and upper back</li>
-                                        <li><strong>Immediate Symptoms:</strong> Whiplash, muscle strain</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="font-medium text-gray-800 mb-2">Treatment & Recovery</h5>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li><strong>Treatment:</strong> Physical therapy (6 weeks)</li>
-                                        <li><strong>Duration:</strong> 3 months full recovery</li>
-                                        <li><strong>Current Status:</strong> No residual effects</li>
-                                        <li><strong>Follow-up:</strong> None required</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mt-4 p-3 bg-yellow-100 rounded">
-                                <h5 class="font-medium text-yellow-800 mb-1">Current Health Impact Assessment</h5>
-                                <p class="text-sm text-yellow-700">Minimal long-term impact. Complete recovery achieved. No ongoing musculoskeletal issues. Recommend maintaining good posture and regular exercise to prevent future neck problems.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event 2: 2015 Appendectomy -->
-                    <div class="relative flex items-start mb-8">
-                        <div class="absolute left-2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow"></div>
-                        <div class="ml-12 bg-blue-50 border-l-4 border-blue-400 rounded-lg p-6 w-full">
-                            <div class="flex justify-between items-start mb-3">
-                                <h4 class="text-lg font-semibold text-blue-800">Appendectomy</h4>
-                                <span class="text-sm text-gray-600 font-medium">2015 (Age 37)</span>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <h5 class="font-medium text-gray-800 mb-2">Surgical Details</h5>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li><strong>Procedure:</strong> Laparoscopic appendectomy</li>
-                                        <li><strong>Indication:</strong> Acute appendicitis</li>
-                                        <li><strong>Complications:</strong> None</li>
-                                        <li><strong>Hospital Stay:</strong> 2 days</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="font-medium text-gray-800 mb-2">Recovery Process</h5>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li><strong>Recovery Time:</strong> 4 weeks</li>
-                                        <li><strong>Return to Work:</strong> 2 weeks</li>
-                                        <li><strong>Full Activity:</strong> 6 weeks</li>
-                                        <li><strong>Wound Healing:</strong> Excellent</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mt-4 p-3 bg-blue-100 rounded">
-                                <h5 class="font-medium text-blue-800 mb-1">Current Health Impact Assessment</h5>
-                                <p class="text-sm text-blue-700">No long-term health implications. Surgical site healed completely with minimal scarring. No impact on digestive function or abdominal health. Standard post-surgical follow-up completed successfully.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Timeline End -->
-                    <div class="relative flex items-start">
-                        <div class="absolute left-2 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow"></div>
-                        <div class="ml-12 bg-green-50 border-l-4 border-green-400 rounded-lg p-4 w-full">
-                            <h4 class="text-lg font-semibold text-green-800 mb-2">Present Day (2024)</h4>
-                            <p class="text-sm text-green-700">No current ongoing medical issues. Excellent recovery from all past events. Continue preventive care and health optimization protocols.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ATM Risk Assessment Summary -->
-                <div class="mt-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
-                    <h3 class="text-lg font-semibold mb-4">ATM Impact Analysis</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <i class="fas fa-shield-check text-3xl text-green-600 mb-3"></i>
-                            <h4 class="font-semibold text-green-800 mb-2">Overall Assessment</h4>
-                            <p class="text-sm text-green-700">Minimal long-term health impact from past events. Excellent recovery patterns indicate good healing capacity and resilience.</p>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-chart-line text-3xl text-blue-600 mb-3"></i>
-                            <h4 class="font-semibold text-blue-800 mb-2">Recovery Profile</h4>
-                            <p class="text-sm text-blue-700">Demonstrates strong recovery capabilities with no complications from surgical interventions. Good tissue healing and pain management.</p>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-eye text-3xl text-purple-600 mb-3"></i>
-                            <h4 class="font-semibold text-purple-800 mb-2">Monitoring Needs</h4>
-                            <p class="text-sm text-purple-700">No specific ongoing monitoring required. Continue standard preventive care. Monitor for any delayed musculoskeletal issues.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 7: Lifestyle Factor Analysis -->
+        <!-- Section 5: Lifestyle Risk Assessment -->
         <div class="report-section">
             <div class="report-header">
                 <i class="fas fa-running"></i>
-                <h2>7. Lifestyle Factor Analysis</h2>
+                <h2>5. Lifestyle Risk Assessment</h2>
             </div>
             <div class="report-content">
                 <!-- Lifestyle Overview -->
@@ -1087,10 +930,1849 @@
             </div>
         </div>
 
-        <!-- Continue with remaining sections... -->
-        <!-- Due to character limits, I'll continue with the remaining 7 sections in the next part -->
+        <!-- Section 6: ATM Timeline Assessment (CORRECTED) -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-timeline"></i>
+                <h2>6. ATM Timeline Assessment</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Antecedents, Triggers and Mediators/Perpetuators</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive assessment of health antecedents (predisposing factors), triggers (precipitating events), and mediators/perpetuators (maintaining factors) that influence current and future health status.</p>
+                </div>
 
-        <!-- Medical Disclaimer -->
+                <!-- ATM Framework Overview -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-blue-50 border-l-4 border-blue-400 rounded-lg p-6">
+                        <h4 class="font-semibold text-blue-800 mb-3 flex items-center">
+                            <i class="fas fa-seedling text-blue-600 mr-2"></i>
+                            Antecedents
+                        </h4>
+                        <p class="text-sm text-blue-700 mb-3">Predisposing factors that create vulnerability or resilience</p>
+                        <ul class="text-sm text-blue-600 space-y-1">
+                            <li>• Genetic predisposition</li>
+                            <li>• Early life experiences</li>
+                            <li>• Environmental exposures</li>
+                            <li>• Constitutional factors</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 rounded-lg p-6">
+                        <h4 class="font-semibold text-yellow-800 mb-3 flex items-center">
+                            <i class="fas fa-bolt text-yellow-600 mr-2"></i>
+                            Triggers
+                        </h4>
+                        <p class="text-sm text-yellow-700 mb-3">Precipitating events that initiate health changes</p>
+                        <ul class="text-sm text-yellow-600 space-y-1">
+                            <li>• Acute stressors</li>
+                            <li>• Infections or toxins</li>
+                            <li>• Life transitions</li>
+                            <li>• Physical traumas</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50 border-l-4 border-purple-400 rounded-lg p-6">
+                        <h4 class="font-semibold text-purple-800 mb-3 flex items-center">
+                            <i class="fas fa-sync-alt text-purple-600 mr-2"></i>
+                            Mediators/Perpetuators
+                        </h4>
+                        <p class="text-sm text-purple-700 mb-3">Factors that maintain or worsen health conditions</p>
+                        <ul class="text-sm text-purple-600 space-y-1">
+                            <li>• Chronic inflammation</li>
+                            <li>• Ongoing stressors</li>
+                            <li>• Poor lifestyle habits</li>
+                            <li>• Biochemical imbalances</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Events -->
+                <div class="relative">
+                    <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500"></div>
+                    
+                    <!-- Event 1: Genetic Predisposition (Antecedent) -->
+                    <div class="relative flex items-start mb-8">
+                        <div class="absolute left-2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow"></div>
+                        <div class="ml-12 bg-blue-50 border-l-4 border-blue-400 rounded-lg p-6 w-full">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-blue-800">Genetic Antecedents</h4>
+                                <span class="text-sm text-gray-600 font-medium">Birth - Present</span>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h5 class="font-medium text-gray-800 mb-2">Predisposing Factors</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li><strong>Cardiovascular:</strong> Paternal history of heart disease</li>
+                                        <li><strong>Cancer:</strong> Maternal breast cancer (grandmother)</li>
+                                        <li><strong>Metabolic:</strong> Paternal diabetes (father)</li>
+                                        <li><strong>Longevity:</strong> Strong maternal longevity genes</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-800 mb-2">Constitutional Strengths</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li><strong>Metabolism:</strong> Efficient glucose regulation</li>
+                                        <li><strong>Immune System:</strong> Strong immune response</li>
+                                        <li><strong>Detoxification:</strong> Good liver function</li>
+                                        <li><strong>Stress Response:</strong> Resilient HPA axis</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-blue-100 rounded">
+                                <h5 class="font-medium text-blue-800 mb-1">ATM Impact Assessment</h5>
+                                <p class="text-sm text-blue-700">Genetic antecedents create moderate risk profile balanced by strong longevity and metabolic genes. Proactive monitoring and prevention strategies recommended.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2: Work Stress Period (Trigger) -->
+                    <div class="relative flex items-start mb-8">
+                        <div class="absolute left-2 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white shadow"></div>
+                        <div class="ml-12 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg p-6 w-full">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-yellow-800">Career Transition Trigger</h4>
+                                <span class="text-sm text-gray-600 font-medium">2019-2020 (Age 41-42)</span>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h5 class="font-medium text-gray-800 mb-2">Triggering Events</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li><strong>Stressor:</strong> Job transition and promotion</li>
+                                        <li><strong>Duration:</strong> 18-month adjustment period</li>
+                                        <li><strong>Impact:</strong> Increased work demands</li>
+                                        <li><strong>Sleep:</strong> Reduced sleep quality (6.5 hours)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-800 mb-2">Physiological Response</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li><strong>Cortisol:</strong> Elevated stress hormones</li>
+                                        <li><strong>Blood Pressure:</strong> Temporary elevation (135/88)</li>
+                                        <li><strong>Weight:</strong> 3kg weight gain</li>
+                                        <li><strong>Energy:</strong> Decreased vitality</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-yellow-100 rounded">
+                                <h5 class="font-medium text-yellow-800 mb-1">ATM Impact Assessment</h5>
+                                <p class="text-sm text-yellow-700">Work stress triggered temporary metabolic and cardiovascular changes. Recovery achieved through lifestyle modifications and stress management. Monitor for stress resilience optimization.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3: Lifestyle Mediators/Perpetuators -->
+                    <div class="relative flex items-start mb-8">
+                        <div class="absolute left-2 w-4 h-4 bg-purple-500 rounded-full border-2 border-white shadow"></div>
+                        <div class="ml-12 bg-purple-50 border-l-4 border-purple-400 rounded-lg p-6 w-full">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-purple-800">Current Mediators/Perpetuators</h4>
+                                <span class="text-sm text-gray-600 font-medium">2020 - Present</span>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h5 class="font-medium text-gray-800 mb-2">Positive Mediators</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li><strong>Exercise:</strong> Regular cardio and strength training</li>
+                                        <li><strong>Nutrition:</strong> Mediterranean diet pattern</li>
+                                        <li><strong>Sleep:</strong> Improved sleep hygiene (7 hours)</li>
+                                        <li><strong>Social Support:</strong> Strong family relationships</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-800 mb-2">Areas for Optimization</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li><strong>Stress Management:</strong> Limited formal techniques</li>
+                                        <li><strong>Work-Life Balance:</strong> Moderate work stress persists</li>
+                                        <li><strong>Supplementation:</strong> Suboptimal vitamin D status</li>
+                                        <li><strong>Inflammation:</strong> Mild inflammatory markers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-purple-100 rounded">
+                                <h5 class="font-medium text-purple-800 mb-1">ATM Impact Assessment</h5>
+                                <p class="text-sm text-purple-700">Strong positive mediators maintain excellent health status. Focus on stress management optimization and inflammatory pathway support for enhanced longevity.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline End -->
+                    <div class="relative flex items-start">
+                        <div class="absolute left-2 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow"></div>
+                        <div class="ml-12 bg-green-50 border-l-4 border-green-400 rounded-lg p-4 w-full">
+                            <h4 class="text-lg font-semibold text-green-800 mb-2">Current ATM Status (2024)</h4>
+                            <p class="text-sm text-green-700">Excellent balance of antecedents, minimal active triggers, and strong positive mediators. Continue optimization protocols for enhanced longevity and disease prevention.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ATM Risk Assessment Summary -->
+                <div class="mt-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">ATM Framework Analysis</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <i class="fas fa-chart-bar text-3xl text-blue-600 mb-3"></i>
+                            <h4 class="font-semibold text-blue-800 mb-2">Antecedent Score</h4>
+                            <p class="text-2xl font-bold text-blue-600">7.5/10</p>
+                            <p class="text-sm text-blue-700">Balanced genetic profile with strong constitutional factors and manageable predispositions.</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-shield-check text-3xl text-green-600 mb-3"></i>
+                            <h4 class="font-semibold text-green-800 mb-2">Trigger Management</h4>
+                            <p class="text-2xl font-bold text-green-600">8.5/10</p>
+                            <p class="text-sm text-green-700">Excellent resilience and recovery from past triggers. Strong adaptive capacity maintained.</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-sync-alt text-3xl text-purple-600 mb-3"></i>
+                            <h4 class="font-semibold text-purple-800 mb-2">Mediator Optimization</h4>
+                            <p class="text-2xl font-bold text-purple-600">8.0/10</p>
+                            <p class="text-sm text-purple-700">Strong positive mediators with opportunities for stress management and inflammatory pathway optimization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Biological Age Assessment -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-dna"></i>
+                <h2>7. Biological Age Assessment</h2>
+            </div>
+            <div class="report-content">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Biological Age Methods -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Multiple Algorithm Analysis</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold text-blue-800">Phenotypic Age</h4>
+                                    <p class="text-sm text-gray-600">9-biomarker mortality predictor</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-blue-600" id="phenotypicAge">42.3</p>
+                                    <p class="text-xs text-gray-500">years</p>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold text-green-800">Klemera-Doubal</h4>
+                                    <p class="text-sm text-gray-600">Multi-biomarker composite</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-green-600" id="klemeraDoubalAge">43.1</p>
+                                    <p class="text-xs text-gray-500">years</p>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center p-4 bg-purple-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold text-purple-800">Metabolic Age</h4>
+                                    <p class="text-sm text-gray-600">Metabolic function analysis</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-purple-600" id="metabolicAge">41.8</p>
+                                    <p class="text-xs text-gray-500">years</p>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center p-4 bg-orange-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold text-orange-800">Telomere Age</h4>
+                                    <p class="text-sm text-gray-600">Cellular aging estimate</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-orange-600" id="telomereAge">42.7</p>
+                                    <p class="text-xs text-gray-500">years</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Age Comparison Chart -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Age Comparison Analysis</h3>
+                        <div class="chart-container">
+                            <canvas id="biologicalAgeChart"></canvas>
+                        </div>
+                        <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold mb-2">Interpretation</h4>
+                            <p class="text-sm text-gray-700" id="biologicalAgeInterpretation">
+                                Your biological age averaging 42.5 years represents excellent aging trajectory, indicating optimal cellular function and metabolic health. This 2.5-year advantage suggests effective lifestyle practices and genetic resilience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biomarkers Used in Calculations -->
+                <div class="mt-8">
+                    <h3 class="text-lg font-semibold mb-4">Key Biomarkers in Biological Age Calculations</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-semibold mb-3 text-gray-800">Phenotypic Age Markers</h4>
+                            <ul class="text-sm space-y-1 text-gray-600">
+                                <li>• Albumin: <span class="biomarker-normal">4.2 g/dL</span></li>
+                                <li>• Creatinine: <span class="biomarker-normal">0.9 mg/dL</span></li>
+                                <li>• Glucose: <span class="biomarker-normal">92 mg/dL</span></li>
+                                <li>• C-Reactive Protein: <span class="biomarker-normal">1.8 mg/L</span></li>
+                                <li>• Lymphocyte %: <span class="biomarker-normal">28%</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-semibold mb-3 text-gray-800">Metabolic Markers</h4>
+                            <ul class="text-sm space-y-1 text-gray-600">
+                                <li>• HbA1c: <span class="biomarker-normal">5.4%</span></li>
+                                <li>• Insulin: <span class="biomarker-normal">8.2 μU/mL</span></li>
+                                <li>• Triglycerides: <span class="biomarker-normal">110 mg/dL</span></li>
+                                <li>• HDL: <span class="biomarker-normal">58 mg/dL</span></li>
+                                <li>• Waist-Hip Ratio: <span class="biomarker-normal">0.87</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-semibold mb-3 text-gray-800">Cellular Health</h4>
+                            <ul class="text-sm space-y-1 text-gray-600">
+                                <li>• White Blood Cells: <span class="biomarker-normal">6.8 K/μL</span></li>
+                                <li>• Red Blood Cells: <span class="biomarker-normal">4.5 M/μL</span></li>
+                                <li>• Hemoglobin: <span class="biomarker-normal">13.5 g/dL</span></li>
+                                <li>• Platelets: <span class="biomarker-normal">285 K/μL</span></li>
+                                <li>• Mean Cell Volume: <span class="biomarker-normal">89 fL</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Laboratory Biomarkers Analysis (NEW) -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-microscope"></i>
+                <h2>8. Laboratory Biomarkers Analysis</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Comprehensive Biomarker Profile</h3>
+                    <p class="text-gray-600 mb-6">Analysis of 60+ laboratory biomarkers across major physiological systems, providing insights into metabolic function, cardiovascular health, immune status, and aging processes.</p>
+                </div>
+
+                <!-- Biomarker Categories -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Lipid Panel -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-chart-pie text-blue-500 mr-2"></i>
+                            Lipid Panel
+                        </h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Total Cholesterol:</span>
+                                <span class="biomarker-normal">195 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">LDL Cholesterol:</span>
+                                <span class="biomarker-normal">115 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">HDL Cholesterol:</span>
+                                <span class="biomarker-normal">58 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Triglycerides:</span>
+                                <span class="biomarker-normal">110 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">TC/HDL Ratio:</span>
+                                <span class="biomarker-normal">3.4</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Optimal lipid profile supporting cardiovascular health.</p>
+                        </div>
+                    </div>
+
+                    <!-- Metabolic Panel -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-tint text-purple-500 mr-2"></i>
+                            Metabolic Panel
+                        </h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Fasting Glucose:</span>
+                                <span class="biomarker-normal">92 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">HbA1c:</span>
+                                <span class="biomarker-normal">5.4%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Insulin (Fasting):</span>
+                                <span class="biomarker-normal">8.2 μU/mL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">HOMA-IR:</span>
+                                <span class="biomarker-normal">1.9</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">C-Peptide:</span>
+                                <span class="biomarker-normal">2.1 ng/mL</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Excellent metabolic function with optimal insulin sensitivity.</p>
+                        </div>
+                    </div>
+
+                    <!-- Inflammatory Markers -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-fire text-red-500 mr-2"></i>
+                            Inflammatory Markers
+                        </h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">CRP (hs):</span>
+                                <span class="biomarker-normal">1.8 mg/L</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">ESR:</span>
+                                <span class="biomarker-normal">12 mm/hr</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Fibrinogen:</span>
+                                <span class="biomarker-normal">295 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">IL-6:</span>
+                                <span class="biomarker-normal">2.1 pg/mL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">TNF-α:</span>
+                                <span class="biomarker-normal">8.5 pg/mL</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Low inflammatory burden supporting healthy aging.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kidney Function -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-kidneys text-teal-500 mr-2"></i>
+                            Kidney Function
+                        </h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Creatinine:</span>
+                                <span class="biomarker-normal">0.9 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">eGFR:</span>
+                                <span class="biomarker-normal">95 mL/min/1.73m²</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">BUN:</span>
+                                <span class="biomarker-normal">15 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">BUN/Creatinine:</span>
+                                <span class="biomarker-normal">16.7</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Cystatin C:</span>
+                                <span class="biomarker-normal">0.85 mg/L</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Excellent kidney function with optimal filtration capacity.</p>
+                        </div>
+                    </div>
+
+                    <!-- Liver Function -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-liver text-amber-500 mr-2"></i>
+                            Liver Function
+                        </h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">ALT:</span>
+                                <span class="biomarker-normal">22 U/L</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">AST:</span>
+                                <span class="biomarker-normal">24 U/L</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">ALP:</span>
+                                <span class="biomarker-normal">68 U/L</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Bilirubin (Total):</span>
+                                <span class="biomarker-normal">0.8 mg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Albumin:</span>
+                                <span class="biomarker-normal">4.2 g/dL</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Optimal liver function supporting detoxification and metabolism.</p>
+                        </div>
+                    </div>
+
+                    <!-- Hormonal Panel -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-dna text-pink-500 mr-2"></i>
+                            Hormonal Panel
+                        </h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">TSH:</span>
+                                <span class="biomarker-normal">2.1 mIU/L</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Free T4:</span>
+                                <span class="biomarker-normal">1.3 ng/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Free T3:</span>
+                                <span class="biomarker-normal">3.2 pg/mL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Cortisol (AM):</span>
+                                <span class="biomarker-normal">12.5 μg/dL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">DHEA-S:</span>
+                                <span class="biomarker-normal">185 μg/dL</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Balanced hormonal profile supporting metabolic health.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biomarker Trends Analysis -->
+                <div class="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Biomarker Pattern Analysis</h3>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <i class="fas fa-chart-line text-3xl text-green-600 mb-3"></i>
+                            <h4 class="font-semibold text-green-800 mb-2">Metabolic Health</h4>
+                            <p class="text-2xl font-bold text-green-600">95%</p>
+                            <p class="text-xs text-green-700">Optimal glucose regulation, insulin sensitivity, and lipid profile</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt text-3xl text-blue-600 mb-3"></i>
+                            <h4 class="font-semibold text-blue-800 mb-2">Organ Function</h4>
+                            <p class="text-2xl font-bold text-blue-600">92%</p>
+                            <p class="text-xs text-blue-700">Excellent kidney, liver, and cardiovascular markers</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-fire-flame-curved text-3xl text-purple-600 mb-3"></i>
+                            <h4 class="font-semibold text-purple-800 mb-2">Inflammation</h4>
+                            <p class="text-2xl font-bold text-purple-600">88%</p>
+                            <p class="text-xs text-purple-700">Low inflammatory burden with room for optimization</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-balance-scale text-3xl text-orange-600 mb-3"></i>
+                            <h4 class="font-semibold text-orange-800 mb-2">Hormonal Balance</h4>
+                            <p class="text-2xl font-bold text-orange-600">90%</p>
+                            <p class="text-xs text-orange-700">Well-balanced endocrine function across key systems</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9: Functional Medicine Assessment (NEW) -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-cogs"></i>
+                <h2>9. Functional Medicine Assessment</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">12 Body Systems Analysis</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive functional medicine evaluation assessing the interconnected relationships between body systems and their impact on overall health and longevity.</p>
+                </div>
+
+                <!-- Body Systems Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Assimilation System -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-utensils text-green-500 mr-2"></i>
+                            Assimilation
+                        </h4>
+                        <div class="text-center mb-4">
+                            <div class="text-3xl font-bold text-green-600">8.5</div>
+                            <div class="text-sm text-gray-600">out of 10</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Digestion:</span>
+                                <span class="text-green-600 font-medium">Excellent</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Absorption:</span>
+                                <span class="text-green-600 font-medium">Good</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Gut Microbiome:</span>
+                                <span class="text-green-600 font-medium">Balanced</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Strong digestive function supporting optimal nutrient utilization.</p>
+                        </div>
+                    </div>
+
+                    <!-- Defense & Repair System -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-shield-alt text-blue-500 mr-2"></i>
+                            Defense & Repair
+                        </h4>
+                        <div class="text-center mb-4">
+                            <div class="text-3xl font-bold text-blue-600">9.0</div>
+                            <div class="text-sm text-gray-600">out of 10</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Immune Function:</span>
+                                <span class="text-blue-600 font-medium">Strong</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Wound Healing:</span>
+                                <span class="text-blue-600 font-medium">Excellent</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Antioxidant Status:</span>
+                                <span class="text-blue-600 font-medium">Good</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-blue-50 rounded">
+                            <p class="text-xs text-blue-700">Robust immune system with excellent repair mechanisms.</p>
+                        </div>
+                    </div>
+
+                    <!-- Energy System -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-bolt text-yellow-500 mr-2"></i>
+                            Energy
+                        </h4>
+                        <div class="text-center mb-4">
+                            <div class="text-3xl font-bold text-green-600">8.0</div>
+                            <div class="text-sm text-gray-600">out of 10</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Mitochondrial Function:</span>
+                                <span class="text-green-600 font-medium">Good</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Energy Production:</span>
+                                <span class="text-green-600 font-medium">Stable</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Fatigue Resistance:</span>
+                                <span class="text-green-600 font-medium">High</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Excellent energy production with strong mitochondrial health.</p>
+                        </div>
+                    </div>
+
+                    <!-- Biotransformation System -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-recycle text-purple-500 mr-2"></i>
+                            Biotransformation
+                        </h4>
+                        <div class="text-center mb-4">
+                            <div class="text-3xl font-bold text-purple-600">7.5</div>
+                            <div class="text-sm text-gray-600">out of 10</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Liver Detox:</span>
+                                <span class="text-purple-600 font-medium">Good</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Phase I/II Balance:</span>
+                                <span class="text-purple-600 font-medium">Balanced</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Elimination:</span>
+                                <span class="text-purple-600 font-medium">Efficient</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-purple-50 rounded">
+                            <p class="text-xs text-purple-700">Good detoxification capacity with room for optimization.</p>
+                        </div>
+                    </div>
+
+                    <!-- Transport System -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-heartbeat text-red-500 mr-2"></i>
+                            Transport
+                        </h4>
+                        <div class="text-center mb-4">
+                            <div class="text-3xl font-bold text-green-600">8.8</div>
+                            <div class="text-sm text-gray-600">out of 10</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Cardiovascular:</span>
+                                <span class="text-green-600 font-medium">Excellent</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Circulation:</span>
+                                <span class="text-green-600 font-medium">Good</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Lymphatic:</span>
+                                <span class="text-green-600 font-medium">Functional</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded">
+                            <p class="text-xs text-green-700">Excellent transport system supporting optimal nutrient delivery.</p>
+                        </div>
+                    </div>
+
+                    <!-- Communication System -->
+                    <div class="bg-white border rounded-lg p-6">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-brain text-indigo-500 mr-2"></i>
+                            Communication
+                        </h4>
+                        <div class="text-center mb-4">
+                            <div class="text-3xl font-bold text-indigo-600">8.2</div>
+                            <div class="text-sm text-gray-600">out of 10</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Nervous System:</span>
+                                <span class="text-indigo-600 font-medium">Good</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Endocrine:</span>
+                                <span class="text-indigo-600 font-medium">Balanced</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Neurotransmitters:</span>
+                                <span class="text-indigo-600 font-medium">Optimal</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-indigo-50 rounded">
+                            <p class="text-xs text-indigo-700">Well-coordinated communication networks supporting homeostasis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Integration Analysis -->
+                <div class="mt-8 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Functional Medicine Integration Score</h3>
+                    <div class="grid md:grid-cols-4 gap-6 text-center">
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Core Systems</h4>
+                            <div class="text-3xl font-bold text-green-600">8.4</div>
+                            <p class="text-xs text-gray-600">Assimilation, Energy, Defense</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Processing</h4>
+                            <div class="text-3xl font-bold text-purple-600">7.8</div>
+                            <p class="text-xs text-gray-600">Biotransformation, Elimination</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Integration</h4>
+                            <div class="text-3xl font-bold text-blue-600">8.5</div>
+                            <p class="text-xs text-gray-600">Transport, Communication</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Overall</h4>
+                            <div class="text-3xl font-bold text-green-600">8.2</div>
+                            <p class="text-xs text-gray-600">Excellent Function</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 10: Hallmarks of Aging Analysis (NEW) -->
+        <div class="report-section page-break">
+            <div class="report-header">
+                <i class="fas fa-hourglass-half"></i>
+                <h2>10. Hallmarks of Aging Analysis</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">14 Hallmarks of Aging Assessment</h3>
+                    <p class="text-gray-600 mb-6">Analysis of the fundamental biological processes that drive aging, providing insights into cellular health, longevity potential, and targeted intervention opportunities.</p>
+                </div>
+
+                <!-- Primary Hallmarks -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-red-700">Primary Hallmarks (Damage)</h4>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="hallmark-item bg-red-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-red-800 mb-2">Genomic Instability</h5>
+                            <div class="text-2xl font-bold text-red-600 mb-2">7.5/10</div>
+                            <p class="text-xs text-red-700">Good DNA repair mechanisms with minimal accumulation of mutations.</p>
+                        </div>
+                        <div class="hallmark-item bg-red-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-red-800 mb-2">Telomere Attrition</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.2/10</div>
+                            <p class="text-xs text-red-700">Excellent telomere length for age, suggesting good cellular longevity.</p>
+                        </div>
+                        <div class="hallmark-item bg-red-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-red-800 mb-2">Epigenetic Alterations</h5>
+                            <div class="text-2xl font-bold text-yellow-600 mb-2">7.8/10</div>
+                            <p class="text-xs text-red-700">Good epigenetic maintenance with lifestyle-supported gene expression.</p>
+                        </div>
+                        <div class="hallmark-item bg-red-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-red-800 mb-2">Loss of Proteostasis</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.0/10</div>
+                            <p class="text-xs text-red-700">Strong protein quality control systems maintaining cellular function.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antagonistic Hallmarks -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-yellow-700">Antagonistic Hallmarks (Response)</h4>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <div class="hallmark-item bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2">Disabled Macroautophagy</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.5/10</div>
+                            <p class="text-xs text-yellow-700">Excellent cellular cleanup and recycling processes.</p>
+                        </div>
+                        <div class="hallmark-item bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2">Deregulated Nutrient Sensing</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.8/10</div>
+                            <p class="text-xs text-yellow-700">Optimal insulin sensitivity and metabolic flexibility.</p>
+                        </div>
+                        <div class="hallmark-item bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2">Mitochondrial Dysfunction</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.0/10</div>
+                            <p class="text-xs text-yellow-700">Strong mitochondrial function supporting energy production.</p>
+                        </div>
+                        <div class="hallmark-item bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2">Cellular Senescence</h5>
+                            <div class="text-2xl font-bold text-yellow-600 mb-2">7.2/10</div>
+                            <p class="text-xs text-yellow-700">Low senescent cell burden with good clearance mechanisms.</p>
+                        </div>
+                        <div class="hallmark-item bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2">Stem Cell Exhaustion</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.3/10</div>
+                            <p class="text-xs text-yellow-700">Good stem cell reservoir and regenerative capacity.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Integrative Hallmarks -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-green-700">Integrative Hallmarks (Phenotype)</h4>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <div class="hallmark-item bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2">Altered Intercellular Communication</h5>
+                            <div class="text-2xl font-bold text-yellow-600 mb-2">7.5/10</div>
+                            <p class="text-xs text-green-700">Good cellular communication with mild inflammatory signaling.</p>
+                        </div>
+                        <div class="hallmark-item bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2">Chronic Inflammation</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.0/10</div>
+                            <p class="text-xs text-green-700">Low inflammatory burden supporting healthy aging.</p>
+                        </div>
+                        <div class="hallmark-item bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2">Dysbiosis</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.2/10</div>
+                            <p class="text-xs text-green-700">Balanced microbiome supporting overall health.</p>
+                        </div>
+                        <div class="hallmark-item bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2">Compromised Autophagy</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.5/10</div>
+                            <p class="text-xs text-green-700">Excellent autophagy function supporting cellular health.</p>
+                        </div>
+                        <div class="hallmark-item bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2">Splicing Dysregulation</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-2">8.0/10</div>
+                            <p class="text-xs text-green-700">Good RNA processing and protein synthesis regulation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aging Score Summary -->
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Hallmarks of Aging Summary</h3>
+                    <div class="grid md:grid-cols-4 gap-6 text-center">
+                        <div>
+                            <h4 class="font-medium text-red-800 mb-2">Primary Damage</h4>
+                            <div class="text-3xl font-bold text-green-600">7.9</div>
+                            <p class="text-xs text-gray-600">Low damage accumulation</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-yellow-800 mb-2">Compensatory Response</h4>
+                            <div class="text-3xl font-bold text-green-600">8.2</div>
+                            <p class="text-xs text-gray-600">Strong adaptive mechanisms</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-green-800 mb-2">Integration</h4>
+                            <div class="text-3xl font-bold text-green-600">8.0</div>
+                            <p class="text-xs text-gray-600">Coordinated aging processes</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-blue-800 mb-2">Biological Age Advantage</h4>
+                            <div class="text-3xl font-bold text-green-600">2.5</div>
+                            <p class="text-xs text-gray-600">Years younger than chronological</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-gray-700">
+                            Excellent performance across all hallmarks of aging indicates successful aging trajectory with strong longevity potential. Continue current lifestyle practices and consider targeted interventions for optimization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 11: Personalized Recommendations (NEW) -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2>11. Personalized Recommendations</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Evidence-Based Interventions</h3>
+                    <p class="text-gray-600 mb-6">Personalized recommendations based on your comprehensive health assessment, targeting areas for optimization and prevention strategies tailored to your unique profile.</p>
+                </div>
+
+                <!-- High Priority Recommendations -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-red-700">High Priority Recommendations</h4>
+                    <div class="space-y-4">
+                        <div class="recommendation-high bg-red-50 p-6 rounded-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <h5 class="font-semibold text-red-800 flex items-center">
+                                    <i class="fas fa-sun text-red-600 mr-2"></i>
+                                    Vitamin D Optimization
+                                </h5>
+                                <span class="bg-red-200 text-red-800 px-2 py-1 rounded text-sm font-medium">Priority 1</span>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-2">Current Status</h6>
+                                    <p class="text-sm text-gray-600">Vitamin D: 32 ng/mL (Suboptimal)</p>
+                                    <p class="text-sm text-gray-600">Target: 50-70 ng/mL</p>
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-2">Recommended Actions</h6>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Vitamin D3 supplement: 4,000-5,000 IU daily</li>
+                                        <li>• Increase sun exposure: 15-20 minutes daily</li>
+                                        <li>• Retest in 3 months</li>
+                                        <li>• Consider vitamin K2 co-supplementation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-red-100 rounded">
+                                <p class="text-sm text-red-800">
+                                    <strong>Rationale:</strong> Suboptimal vitamin D levels increase risk of bone loss, immune dysfunction, and cancer. Optimization supports bone health, immune function, and longevity.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-high bg-red-50 p-6 rounded-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <h5 class="font-semibold text-red-800 flex items-center">
+                                    <i class="fas fa-om text-red-600 mr-2"></i>
+                                    Advanced Stress Management
+                                </h5>
+                                <span class="bg-red-200 text-red-800 px-2 py-1 rounded text-sm font-medium">Priority 2</span>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-2">Current Status</h6>
+                                    <p class="text-sm text-gray-600">Stress Level: Moderate (Work-related)</p>
+                                    <p class="text-sm text-gray-600">HRV: Room for improvement</p>
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-2">Recommended Interventions</h6>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Implement daily meditation: 10-15 minutes</li>
+                                        <li>• Breath work practice: 4-7-8 technique</li>
+                                        <li>• Consider adaptogenic herbs: Ashwagandha</li>
+                                        <li>• HRV training with biofeedback device</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-red-100 rounded">
+                                <p class="text-sm text-red-800">
+                                    <strong>Rationale:</strong> Chronic stress accelerates aging and increases disease risk. Advanced stress management techniques can optimize HPA axis function and improve longevity.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-high bg-red-50 p-6 rounded-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <h5 class="font-semibold text-red-800 flex items-center">
+                                    <i class="fas fa-heartbeat text-red-600 mr-2"></i>
+                                    Blood Pressure Optimization
+                                </h5>
+                                <span class="bg-red-200 text-red-800 px-2 py-1 rounded text-sm font-medium">Priority 3</span>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-2">Current Status</h6>
+                                    <p class="text-sm text-gray-600">BP: 125/82 mmHg (Elevated)</p>
+                                    <p class="text-sm text-gray-600">Target: <120/80 mmHg</p>
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-2">Lifestyle Interventions</h6>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Reduce sodium intake: <2,300mg/day</li>
+                                        <li>• Increase potassium-rich foods</li>
+                                        <li>• Consider beetroot juice or extract</li>
+                                        <li>• Monitor BP weekly at home</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-red-100 rounded">
+                                <p class="text-sm text-red-800">
+                                    <strong>Rationale:</strong> Elevated blood pressure increases cardiovascular and stroke risk. Early intervention through lifestyle modification can prevent progression to hypertension.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medium Priority Recommendations -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-yellow-700">Medium Priority Recommendations</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="recommendation-medium bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                                <i class="fas fa-pills text-yellow-600 mr-2"></i>
+                                Longevity Supplementation
+                            </h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Omega-3 fatty acids: 2-3g EPA/DHA daily</li>
+                                <li>• Magnesium glycinate: 400mg before bed</li>
+                                <li>• NAD+ precursors: Consider NMN or NR</li>
+                                <li>• Curcumin with piperine for inflammation</li>
+                            </ul>
+                        </div>
+
+                        <div class="recommendation-medium bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                                <i class="fas fa-clock text-yellow-600 mr-2"></i>
+                                Intermittent Fasting
+                            </h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Start with 14:10 time-restricted eating</li>
+                                <li>• Progress to 16:8 protocol if tolerated</li>
+                                <li>• Consider 24-hour fast monthly</li>
+                                <li>• Monitor energy and sleep quality</li>
+                            </ul>
+                        </div>
+
+                        <div class="recommendation-medium bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                                <i class="fas fa-thermometer-half text-yellow-600 mr-2"></i>
+                                Hormetic Stressors
+                            </h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Sauna therapy: 15-20 minutes, 3x/week</li>
+                                <li>• Cold exposure: Cold showers or ice baths</li>
+                                <li>• High-intensity interval training</li>
+                                <li>• Gradual heat/cold adaptation protocols</li>
+                            </ul>
+                        </div>
+
+                        <div class="recommendation-medium bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                                <i class="fas fa-bed text-yellow-600 mr-2"></i>
+                                Sleep Optimization
+                            </h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Aim for 7.5-8 hours nightly</li>
+                                <li>• Optimize sleep environment: cool, dark</li>
+                                <li>• Blue light blockers 2 hours before bed</li>
+                                <li>• Consider sleep tracking device</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Low Priority Recommendations -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-green-700">Optimization Recommendations</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="recommendation-low bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2 flex items-center">
+                                <i class="fas fa-microscope text-green-600 mr-2"></i>
+                                Advanced Testing
+                            </h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Comprehensive micronutrient panel</li>
+                                <li>• Inflammatory markers (IL-6, TNF-α)</li>
+                                <li>• Advanced lipid profile (ApoB, LpPLA2)</li>
+                                <li>• Telomere length assessment</li>
+                            </ul>
+                        </div>
+
+                        <div class="recommendation-low bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2 flex items-center">
+                                <i class="fas fa-brain text-green-600 mr-2"></i>
+                                Cognitive Enhancement
+                            </h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Dual N-back training</li>
+                                <li>• Learn new language or skill</li>
+                                <li>• Meditation practice advancement</li>
+                                <li>• Social engagement activities</li>
+                            </ul>
+                        </div>
+
+                        <div class="recommendation-low bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2 flex items-center">
+                                <i class="fas fa-leaf text-green-600 mr-2"></i>
+                                Environmental Optimization
+                            </h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Air purifier with HEPA filter</li>
+                                <li>• Water filtration system</li>
+                                <li>• Reduce EMF exposure</li>
+                                <li>• Non-toxic household products</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implementation Timeline -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Implementation Timeline</h3>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <h4 class="font-medium text-red-800 mb-2">Week 1-2</h4>
+                            <p class="text-sm text-gray-600">Start vitamin D supplementation, implement daily meditation, begin BP monitoring</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="font-medium text-yellow-800 mb-2">Month 1</h4>
+                            <p class="text-sm text-gray-600">Add longevity supplements, begin intermittent fasting trial, optimize sleep environment</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="font-medium text-green-800 mb-2">Month 2-3</h4>
+                            <p class="text-sm text-gray-600">Introduce hormetic stressors, advanced testing, reassess vitamin D levels</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="font-medium text-blue-800 mb-2">Ongoing</h4>
+                            <p class="text-sm text-gray-600">Continue protocols, track progress, adjust based on response and new research</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 12: Action Plans (NEW) -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-tasks"></i>
+                <h2>12. Action Plans</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Structured Implementation Plans</h3>
+                    <p class="text-gray-600 mb-6">Detailed action plans with specific timelines, measurable goals, and progress tracking metrics to ensure successful implementation of recommendations.</p>
+                </div>
+
+                <!-- 30-Day Action Plan -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-blue-700">30-Day Immediate Action Plan</h4>
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-blue-800 mb-3">Week 1-2 Goals</h5>
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="mt-1 mr-3">
+                                        <div>
+                                            <h6 class="font-medium text-gray-800">Start Vitamin D3 Supplementation</h6>
+                                            <p class="text-sm text-gray-600">4,000 IU daily with breakfast</p>
+                                            <p class="text-xs text-blue-600">Target: Establish daily habit</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="mt-1 mr-3">
+                                        <div>
+                                            <h6 class="font-medium text-gray-800">Implement Daily Meditation</h6>
+                                            <p class="text-sm text-gray-600">10 minutes using guided app</p>
+                                            <p class="text-xs text-blue-600">Target: 14 consecutive days</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="mt-1 mr-3">
+                                        <div>
+                                            <h6 class="font-medium text-gray-800">Home Blood Pressure Monitoring</h6>
+                                            <p class="text-sm text-gray-600">Daily readings, same time</p>
+                                            <p class="text-xs text-blue-600">Target: Establish baseline trend</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-blue-800 mb-3">Week 3-4 Goals</h5>
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="mt-1 mr-3">
+                                        <div>
+                                            <h6 class="font-medium text-gray-800">Optimize Sleep Environment</h6>
+                                            <p class="text-sm text-gray-600">Room temperature, blackout, blue light blockers</p>
+                                            <p class="text-xs text-blue-600">Target: 7.5+ hours nightly</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="mt-1 mr-3">
+                                        <div>
+                                            <h6 class="font-medium text-gray-800">Reduce Sodium Intake</h6>
+                                            <p class="text-sm text-gray-600">Eliminate processed foods, cook at home</p>
+                                            <p class="text-xs text-blue-600">Target: <2,300mg daily</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="mt-1 mr-3">
+                                        <div>
+                                            <h6 class="font-medium text-gray-800">Add Stress-Reduction Techniques</h6>
+                                            <p class="text-sm text-gray-600">4-7-8 breathing, progressive muscle relaxation</p>
+                                            <p class="text-xs text-blue-600">Target: Practice during work breaks</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 90-Day Action Plan -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-green-700">90-Day Optimization Plan</h4>
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <div class="space-y-6">
+                            <div>
+                                <h5 class="font-semibold text-green-800 mb-3">Month 2 Objectives</h5>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded border">
+                                        <h6 class="font-medium text-gray-800 mb-2">Intermittent Fasting Trial</h6>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Week 1-2: 14:10 time restriction</li>
+                                            <li>• Week 3-4: 16:8 if tolerated well</li>
+                                            <li>• Monitor energy, sleep, hunger</li>
+                                            <li>• Track weight and body composition</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white p-4 rounded border">
+                                        <h6 class="font-medium text-gray-800 mb-2">Longevity Supplement Stack</h6>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Omega-3: 2g EPA/DHA daily</li>
+                                            <li>• Magnesium: 400mg before bed</li>
+                                            <li>• Curcumin: 500mg with meals</li>
+                                            <li>• Monitor tolerance and effects</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-green-800 mb-3">Month 3 Objectives</h5>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded border">
+                                        <h6 class="font-medium text-gray-800 mb-2">Hormetic Stress Introduction</h6>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Sauna: 15 min, 3x/week at 160-180°F</li>
+                                            <li>• Cold showers: 30 sec cold finish</li>
+                                            <li>• HIIT workouts: 1-2x/week</li>
+                                            <li>• Monitor recovery and adaptation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white p-4 rounded border">
+                                        <h6 class="font-medium text-gray-800 mb-2">Advanced Testing</h6>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Vitamin D recheck (target 50-70 ng/mL)</li>
+                                            <li>• Comprehensive metabolic panel</li>
+                                            <li>• Advanced lipid profile</li>
+                                            <li>• Inflammatory markers panel</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annual Plan -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-purple-700">12-Month Longevity Plan</h4>
+                    <div class="bg-purple-50 rounded-lg p-6">
+                        <div class="grid md:grid-cols-4 gap-4">
+                            <div class="text-center">
+                                <h5 class="font-semibold text-purple-800 mb-2">Quarter 1</h5>
+                                <div class="bg-white p-4 rounded">
+                                    <p class="text-sm text-gray-600 mb-2">Foundation Building</p>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• Core supplements</li>
+                                        <li>• Stress management</li>
+                                        <li>• BP optimization</li>
+                                        <li>• Sleep improvement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h5 class="font-semibold text-purple-800 mb-2">Quarter 2</h5>
+                                <div class="bg-white p-4 rounded">
+                                    <p class="text-sm text-gray-600 mb-2">Metabolic Optimization</p>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• Intermittent fasting</li>
+                                        <li>• Hormetic stressors</li>
+                                        <li>• Advanced testing</li>
+                                        <li>• Exercise refinement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h5 class="font-semibold text-purple-800 mb-2">Quarter 3</h5>
+                                <div class="bg-white p-4 rounded">
+                                    <p class="text-sm text-gray-600 mb-2">Advanced Interventions</p>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• NAD+ optimization</li>
+                                        <li>• Cognitive training</li>
+                                        <li>• Microbiome support</li>
+                                        <li>• Environmental cleanup</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h5 class="font-semibold text-purple-800 mb-2">Quarter 4</h5>
+                                <div class="bg-white p-4 rounded">
+                                    <p class="text-sm text-gray-600 mb-2">Integration & Assessment</p>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• Comprehensive retest</li>
+                                        <li>• Protocol refinement</li>
+                                        <li>• Long-term planning</li>
+                                        <li>• Goal reassessment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Metrics -->
+                <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Success Metrics & Tracking</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-medium text-orange-800 mb-3">Biomarker Targets</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Vitamin D:</span>
+                                    <span class="font-medium">50-70 ng/mL</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Blood Pressure:</span>
+                                    <span class="font-medium">&lt;120/80 mmHg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">CRP (hs):</span>
+                                    <span class="font-medium">&lt;1.0 mg/L</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">HbA1c:</span>
+                                    <span class="font-medium">&lt;5.4%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-orange-800 mb-3">Performance Metrics</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Sleep Quality:</span>
+                                    <span class="font-medium">7.5+ hrs, 85%+ efficiency</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">HRV:</span>
+                                    <span class="font-medium">10% improvement</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">VO2 Max:</span>
+                                    <span class="font-medium">Maintain/improve</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Body Composition:</span>
+                                    <span class="font-medium">Maintain lean mass</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-orange-800 mb-3">Subjective Measures</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Energy Level:</span>
+                                    <span class="font-medium">8+/10 daily</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Stress Management:</span>
+                                    <span class="font-medium">7+/10 rating</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Mood Stability:</span>
+                                    <span class="font-medium">Consistent positive</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Cognitive Function:</span>
+                                    <span class="font-medium">Sharp focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 13: Follow-up Protocols (NEW) -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-calendar-check"></i>
+                <h2>13. Follow-up Protocols</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Monitoring & Reassessment Schedule</h3>
+                    <p class="text-gray-600 mb-6">Structured follow-up protocols to track progress, adjust interventions, and ensure long-term success in your health optimization journey.</p>
+                </div>
+
+                <!-- Short-term Follow-up -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-blue-700">Short-term Follow-up (1-6 months)</h4>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 rounded-lg p-6">
+                            <h5 class="font-semibold text-blue-800 mb-4">30-Day Check-in</h5>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mr-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="font-medium text-gray-800">Compliance Assessment</h6>
+                                        <p class="text-sm text-gray-600">Review supplement adherence, meditation practice, BP monitoring consistency</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-chart-line text-blue-600 mr-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="font-medium text-gray-800">Progress Metrics</h6>
+                                        <p class="text-sm text-gray-600">Blood pressure trends, sleep quality scores, subjective energy levels</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-exclamation-triangle text-blue-600 mr-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="font-medium text-gray-800">Troubleshooting</h6>
+                                        <p class="text-sm text-gray-600">Address barriers, side effects, or adherence challenges</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-6">
+                            <h5 class="font-semibold text-green-800 mb-4">90-Day Comprehensive Review</h5>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <i class="fas fa-vial text-green-600 mr-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="font-medium text-gray-800">Laboratory Reassessment</h6>
+                                        <p class="text-sm text-gray-600">Vitamin D, lipid panel, inflammatory markers, metabolic panel</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-balance-scale text-green-600 mr-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="font-medium text-gray-800">Body Composition Analysis</h6>
+                                        <p class="text-sm text-gray-600">DEXA scan or bioelectrical impedance, waist-hip ratio measurement</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-clipboard-list text-green-600 mr-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="font-medium text-gray-800">Protocol Optimization</h6>
+                                        <p class="text-sm text-gray-600">Adjust supplements, modify interventions based on response</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medium-term Follow-up -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-purple-700">Medium-term Follow-up (6-12 months)</h4>
+                    <div class="bg-purple-50 rounded-lg p-6">
+                        <h5 class="font-semibold text-purple-800 mb-4">6-Month Comprehensive Health Reassessment</h5>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded border">
+                                <h6 class="font-medium text-gray-800 mb-2">Advanced Biomarkers</h6>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Comprehensive metabolic panel</li>
+                                    <li>• Advanced lipid profile (ApoB, LpPLA2)</li>
+                                    <li>• Inflammatory cytokines</li>
+                                    <li>• Hormonal assessment</li>
+                                    <li>• Micronutrient analysis</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded border">
+                                <h6 class="font-medium text-gray-800 mb-2">Functional Assessments</h6>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Cardiovascular fitness testing</li>
+                                    <li>• Cognitive function battery</li>
+                                    <li>• Stress response evaluation</li>
+                                    <li>• Sleep study (if indicated)</li>
+                                    <li>• Body composition analysis</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded border">
+                                <h6 class="font-medium text-gray-800 mb-2">Biological Age Recalculation</h6>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Updated phenotypic age</li>
+                                    <li>• Klemera-Doubal assessment</li>
+                                    <li>• Metabolic age calculation</li>
+                                    <li>• Telomere length (optional)</li>
+                                    <li>• Aging rate analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Long-term Follow-up -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-orange-700">Long-term Follow-up (Annual+)</h4>
+                    <div class="bg-orange-50 rounded-lg p-6">
+                        <h5 class="font-semibold text-orange-800 mb-4">Annual Comprehensive Longevity Assessment</h5>
+                        <div class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-3">Core Health Metrics</h6>
+                                    <div class="bg-white p-4 rounded border">
+                                        <ul class="text-sm text-gray-600 space-y-2">
+                                            <li>• <strong>Cardiovascular:</strong> Stress test, echocardiogram, carotid IMT</li>
+                                            <li>• <strong>Metabolic:</strong> OGTT, insulin sensitivity, advanced glycation</li>
+                                            <li>• <strong>Inflammatory:</strong> Comprehensive cytokine panel</li>
+                                            <li>• <strong>Cognitive:</strong> Neuropsychological testing</li>
+                                            <li>• <strong>Cancer Screening:</strong> Age-appropriate protocols</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-3">Advanced Longevity Markers</h6>
+                                    <div class="bg-white p-4 rounded border">
+                                        <ul class="text-sm text-gray-600 space-y-2">
+                                            <li>• <strong>Epigenetic Age:</strong> DNA methylation clocks</li>
+                                            <li>• <strong>Senescence:</strong> Senescent cell burden markers</li>
+                                            <li>• <strong>Autophagy:</strong> Cellular cleanup efficiency</li>
+                                            <li>• <strong>Mitochondrial:</strong> Function and biogenesis markers</li>
+                                            <li>• <strong>Microbiome:</strong> Gut health and diversity analysis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="font-medium text-gray-800 mb-3">Protocol Evolution Strategy</h6>
+                                <div class="bg-white p-4 rounded border">
+                                    <div class="grid md:grid-cols-3 gap-4">
+                                        <div>
+                                            <h7 class="font-medium text-gray-700">Evidence Review</h7>
+                                            <p class="text-sm text-gray-600 mt-1">Update protocols based on latest longevity research and personal response data</p>
+                                        </div>
+                                        <div>
+                                            <h7 class="font-medium text-gray-700">Risk Stratification</h7>
+                                            <p class="text-sm text-gray-600 mt-1">Reassess disease risks and adjust prevention strategies accordingly</p>
+                                        </div>
+                                        <div>
+                                            <h7 class="font-medium text-gray-700">Goal Refinement</h7>
+                                            <p class="text-sm text-gray-600 mt-1">Update health span and longevity objectives based on progress and new insights</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitoring Tools & Technology -->
+                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Continuous Monitoring Tools</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <i class="fas fa-heartbeat text-3xl text-red-500 mb-3"></i>
+                            <h4 class="font-medium text-gray-800 mb-2">Cardiovascular</h4>
+                            <ul class="text-xs text-gray-600 space-y-1">
+                                <li>• Home BP monitor</li>
+                                <li>• HRV tracking device</li>
+                                <li>• Continuous heart rate</li>
+                                <li>• ECG monitoring</li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-tint text-3xl text-blue-500 mb-3"></i>
+                            <h4 class="font-medium text-gray-800 mb-2">Metabolic</h4>
+                            <ul class="text-xs text-gray-600 space-y-1">
+                                <li>• Continuous glucose monitor</li>
+                                <li>• Ketone meter</li>
+                                <li>• Body composition scale</li>
+                                <li>• Metabolic tracking apps</li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-bed text-3xl text-purple-500 mb-3"></i>
+                            <h4 class="font-medium text-gray-800 mb-2">Sleep & Recovery</h4>
+                            <ul class="text-xs text-gray-600 space-y-1">
+                                <li>• Sleep tracking device</li>
+                                <li>• Recovery metrics</li>
+                                <li>• Room environment monitor</li>
+                                <li>• Sleep diary app</li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-brain text-3xl text-green-500 mb-3"></i>
+                            <h4 class="font-medium text-gray-800 mb-2">Cognitive & Stress</h4>
+                            <ul class="text-xs text-gray-600 space-y-1">
+                                <li>• Stress monitoring wearable</li>
+                                <li>• Meditation app tracking</li>
+                                <li>• Cognitive assessment tools</li>
+                                <li>• Mood tracking journal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 14: Professional Summary (NEW) -->
+        <div class="report-section">
+            <div class="report-header">
+                <i class="fas fa-user-md"></i>
+                <h2>14. Professional Summary</h2>
+            </div>
+            <div class="report-content">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Clinical Assessment & Recommendations</h3>
+                    <p class="text-gray-600 mb-6">Professional healthcare practitioner summary and evidence-based recommendations for optimal health span and longevity.</p>
+                </div>
+
+                <!-- Executive Clinical Summary -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-blue-800">Clinical Assessment Summary</h4>
+                    <div class="prose prose-sm max-w-none text-gray-700">
+                        <p class="mb-4">
+                            This comprehensive health assessment reveals an individual with exceptional health metrics and aging trajectory. The client demonstrates a <strong>biological age of 42.5 years</strong>, representing a significant 2.5-year advantage over chronological age, indicating optimal cellular function and successful aging patterns.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h5 class="font-semibold text-green-700 mb-2">Clinical Strengths</h5>
+                                <ul class="space-y-1 text-sm">
+                                    <li>• <strong>Cardiovascular Excellence:</strong> Low ASCVD risk (8.5%), optimal lipid profile</li>
+                                    <li>• <strong>Metabolic Health:</strong> Excellent insulin sensitivity, low diabetes risk</li>
+                                    <li>• <strong>Functional Systems:</strong> Strong performance across all 12 body systems</li>
+                                    <li>• <strong>Mental Health:</strong> Minimal depression/anxiety, good cognitive function</li>
+                                    <li>• <strong>Lifestyle Factors:</strong> Excellent exercise habits, Mediterranean diet adherence</li>
+                                    <li>• <strong>Biological Aging:</strong> Favorable across all four aging assessment methods</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-yellow-700 mb-2">Optimization Opportunities</h5>
+                                <ul class="space-y-1 text-sm">
+                                    <li>• <strong>Vitamin D Status:</strong> Suboptimal at 32 ng/mL (target: 50-70 ng/mL)</li>
+                                    <li>• <strong>Blood Pressure:</strong> Elevated at 125/82 mmHg (target: &lt;120/80)</li>
+                                    <li>• <strong>Stress Management:</strong> Moderate work-related stress requires optimization</li>
+                                    <li>• <strong>Sleep Quality:</strong> Room for improvement in duration and efficiency</li>
+                                    <li>• <strong>Inflammatory Markers:</strong> Mild elevation suggests optimization potential</li>
+                                    <li>• <strong>Longevity Protocols:</strong> Implementation of advanced interventions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Stratification -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-purple-700">Risk Stratification & Prevention Strategy</h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                            <h5 class="font-semibold text-green-800 mb-3 flex items-center">
+                                <i class="fas fa-shield-check text-green-600 mr-2"></i>
+                                Low Risk Categories
+                            </h5>
+                            <ul class="text-sm text-green-700 space-y-1">
+                                <li>• Cardiovascular Disease (8.5% 10-year risk)</li>
+                                <li>• Type 2 Diabetes (FINDRISC: 6/26)</li>
+                                <li>• Cognitive Decline (CAIDE: 3/15)</li>
+                                <li>• Kidney Disease (eGFR: 95)</li>
+                                <li>• Stroke Risk (4.2% 10-year)</li>
+                            </ul>
+                            <div class="mt-3 p-2 bg-green-100 rounded">
+                                <p class="text-xs text-green-800">Continue current prevention strategies with minor optimization.</p>
+                            </div>
+                        </div>
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                            <h5 class="font-semibold text-yellow-800 mb-3 flex items-center">
+                                <i class="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
+                                Moderate Risk Categories
+                            </h5>
+                            <ul class="text-sm text-yellow-700 space-y-1">
+                                <li>• Cancer Risk (family history present)</li>
+                                <li>• Metabolic Syndrome (1/5 criteria met)</li>
+                                <li>• Hypertension Development (BP 125/82)</li>
+                                <li>• Osteoporosis (family history, suboptimal Vit D)</li>
+                            </ul>
+                            <div class="mt-3 p-2 bg-yellow-100 rounded">
+                                <p class="text-xs text-yellow-800">Active monitoring and targeted interventions recommended.</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                            <h5 class="font-semibold text-blue-800 mb-3 flex items-center">
+                                <i class="fas fa-eye text-blue-600 mr-2"></i>
+                                Monitoring Focus Areas
+                            </h5>
+                            <ul class="text-sm text-blue-700 space-y-1">
+                                <li>• Blood pressure trends (weekly monitoring)</li>
+                                <li>• Inflammatory marker progression</li>
+                                <li>• Stress response optimization</li>
+                                <li>• Hormonal balance maintenance</li>
+                                <li>• Body composition changes</li>
+                            </ul>
+                            <div class="mt-3 p-2 bg-blue-100 rounded">
+                                <p class="text-xs text-blue-800">Regular assessment with protocol adjustments as needed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical Recommendations -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-red-700">Priority Clinical Recommendations</h4>
+                    <div class="space-y-4">
+                        <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded">
+                            <h5 class="font-semibold text-red-800 mb-2">Immediate Interventions (0-30 days)</h5>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-1">Vitamin D Correction Protocol</h6>
+                                    <p class="text-sm text-gray-600">Vitamin D3 4,000-5,000 IU daily with monitoring. Target: 50-70 ng/mL within 3 months.</p>
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-1">Hypertension Prevention</h6>
+                                    <p class="text-sm text-gray-600">Sodium restriction (&lt;2,300mg), home BP monitoring, lifestyle optimization.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded">
+                            <h5 class="font-semibold text-yellow-800 mb-2">Medium-term Optimization (1-6 months)</h5>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-1">Stress Management Protocol</h6>
+                                    <p class="text-sm text-gray-600">Implement evidence-based stress reduction techniques, HRV training, adaptogenic support.</p>
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-1">Longevity Supplementation</h6>
+                                    <p class="text-sm text-gray-600">Omega-3, magnesium, curcumin, NAD+ precursors based on individual response.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded">
+                            <h5 class="font-semibold text-green-800 mb-2">Long-term Longevity Strategy (6+ months)</h5>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-1">Advanced Interventions</h6>
+                                    <p class="text-sm text-gray-600">Hormetic stressors, intermittent fasting, cognitive training, environmental optimization.</p>
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-gray-800 mb-1">Comprehensive Monitoring</h6>
+                                    <p class="text-sm text-gray-600">Advanced biomarker tracking, biological age reassessment, protocol refinement.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Prognosis -->
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-4 text-green-800">Professional Prognosis & Long-term Outlook</h4>
+                    <div class="prose prose-sm max-w-none text-gray-700">
+                        <p class="mb-4">
+                            Based on comprehensive assessment data, this individual demonstrates <strong>exceptional health status</strong> with optimal aging trajectory. Current biological age advantage of 2.5 years, combined with excellent lifestyle factors and low disease risk profile, positions the client for extended healthspan and longevity.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-blue-700 mb-2">Healthspan Projection</h5>
+                                <ul class="space-y-1 text-sm">
+                                    <li>• <strong>Cardiovascular Health:</strong> Excellent prognosis with continued optimization</li>
+                                    <li>• <strong>Metabolic Function:</strong> Strong trajectory toward metabolic longevity</li>
+                                    <li>• <strong>Cognitive Preservation:</strong> High likelihood of maintained function</li>
+                                    <li>• <strong>Functional Independence:</strong> Extended capacity expected</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-purple-700 mb-2">Optimization Potential</h5>
+                                <ul class="space-y-1 text-sm">
+                                    <li>• <strong>Biological Age:</strong> Potential for 3-5 year advantage with optimization</li>
+                                    <li>• <strong>Disease Prevention:</strong> Significant risk reduction achievable</li>
+                                    <li>• <strong>Performance Enhancement:</strong> Physical and cognitive improvements expected</li>
+                                    <li>• <strong>Longevity Trajectory:</strong> Positioned for exceptional lifespan extension</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-white rounded border">
+                            <h5 class="font-semibold text-gray-800 mb-2">Practitioner Recommendations</h5>
+                            <p class="text-sm text-gray-700">
+                                Continue current health optimization practices while implementing targeted interventions for identified areas. 
+                                Regular monitoring and protocol adjustments will maximize longevity potential. Consider collaboration with 
+                                specialized practitioners for advanced interventions as protocols mature. The client's excellent health foundation 
+                                and commitment to optimization suggest exceptional potential for extended healthspan and longevity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Signature -->
+                <div class="mt-8 text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800">Professional Assessment Completed By</h4>
+                        <p class="text-xl font-bold text-blue-700 mt-2">Dr. Graham Player, Ph.D</p>
+                        <p class="text-sm text-gray-600">Professional Healthcare Innovation Consultant</p>
+                        <p class="text-sm text-blue-600 font-medium">Longenix Health — Predict • Prevent • Persist</p>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        <p>Assessment Date: <span id="assessmentCompletionDate"></span></p>
+                        <p>Report Version: 2.1 | Next Review Recommended: 3 months</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Medical Disclaimer -->
+    <div class="max-w-7xl mx-auto px-6 pb-8">
         <div class="mt-12 bg-gray-100 rounded-lg p-6 text-center">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">Medical Disclaimer</h3>
             <p class="text-sm text-gray-600 leading-relaxed">
@@ -1113,6 +2795,7 @@
         // Set current date
         document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
         document.getElementById('assessmentDate').textContent = new Date().toLocaleDateString();
+        document.getElementById('assessmentCompletionDate').textContent = new Date().toLocaleDateString();
 
         // Load assessment data if available
         let assessmentData = null;
@@ -1227,17 +2910,17 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Cardiovascular', 'Diabetes', 'Cancer', 'Cognitive', 'Metabolic', 'Osteoporosis', 'Mortality'],
+                    labels: ['Cardiovascular', 'Diabetes', 'Cancer', 'Cognitive', 'Metabolic', 'Kidney', 'Stroke'],
                     datasets: [{
                         label: 'Risk Percentage',
-                        data: [8.5, 12.0, 18.2, 8.8, 15.5, 22.1, 12.3],
+                        data: [8.5, 12.0, 18.2, 8.8, 15.5, 6.2, 4.2],
                         backgroundColor: [
                             '#10b981',
                             '#10b981', 
                             '#f59e0b',
                             '#10b981',
                             '#f59e0b',
-                            '#f59e0b',
+                            '#10b981',
                             '#10b981'
                         ],
                         borderColor: [
@@ -1246,7 +2929,7 @@
                             '#d97706',
                             '#059669',
                             '#d97706',
-                            '#d97706',
+                            '#059669',
                             '#059669'
                         ],
                         borderWidth: 1
