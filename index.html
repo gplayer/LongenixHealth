@@ -79,13 +79,6 @@
                 <i class="fas fa-exclamation-triangle mr-2"></i>
                 <span id="authErrorMessage">Invalid credentials. Please try again.</span>
             </div>
-
-            <!-- Debug Info -->
-            <div class="mt-4 p-3 bg-gray-100 rounded-lg text-xs text-gray-600">
-                <strong>For testing:</strong><br>
-                Password: #*LonGenix42<br>
-                Country: Select any option
-            </div>
         </div>
     </div>
 
@@ -106,119 +99,116 @@
             </div>
         </nav>
 
-        <!-- Success Message -->
-        <div class="max-w-7xl mx-auto px-4 py-8">
-            <div class="bg-green-100 border border-green-300 text-green-800 rounded-lg p-6 mb-8">
-                <div class="flex items-center">
-                    <i class="fas fa-check-circle text-2xl mr-4"></i>
-                    <div>
-                        <h3 class="text-lg font-semibold">Authentication Successful!</h3>
-                        <p>Welcome to the Longenix Health Assessment System. Your system is now fully operational.</p>
+        <!-- Data Entry Methods -->
+        <section class="max-w-7xl mx-auto px-4 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Data Entry Method</h2>
+                <p class="text-lg text-gray-600">Choose how you would like to input client health data</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Manual Data Entry -->
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover cursor-pointer" onclick="startDataEntry('manual')">
+                    <div class="text-center">
+                        <i class="fas fa-edit text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Manual Data Entry</h3>
+                        <p class="text-gray-600 mb-6">Enter all client information manually through comprehensive forms</p>
+                        <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Demographics & Biometrics</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>60+ Lab Biomarkers</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Family History (3 generations)</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>ATM Timeline</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mental Health Screening</li>
+                        </ul>
+                        <button class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition">
+                            Start Manual Entry
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upload Lab Results -->
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover cursor-pointer" onclick="startDataEntry('upload')">
+                    <div class="text-center">
+                        <i class="fas fa-upload text-4xl text-green-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Upload Lab Results</h3>
+                        <p class="text-gray-600 mb-6">Upload PDF or XLSX files for automatic data extraction</p>
+                        <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>PDF Lab Reports</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>XLSX Spreadsheets</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Automatic Data Extraction</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>OCR Text Recognition</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Data Validation</li>
+                        </ul>
+                        <button class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition">
+                            Upload Files
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Load Demo Client -->
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover cursor-pointer" onclick="startDataEntry('demo')">
+                    <div class="text-center">
+                        <i class="fas fa-user-cog text-4xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Load Demo Client</h3>
+                        <p class="text-gray-600 mb-6">Use pre-loaded hypothetical client data for testing and demonstration</p>
+                        <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Complete Health Profile</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Realistic Lab Values</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Family History Data</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Lifestyle Factors</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Instant Report Generation</li>
+                        </ul>
+                        <button class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition">
+                            Load Demo Data
+                        </button>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Assessment Options -->
-            <section class="py-12">
+        <!-- System Features Preview -->
+        <section class="bg-white py-12">
+            <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Choose Your Assessment Method</h2>
-                    <p class="text-lg text-gray-600">Select how you'd like to input your health data</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Comprehensive Health Assessment</h2>
+                    <p class="text-lg text-gray-600">Advanced algorithms and professional reporting</p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Manual Entry -->
-                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover cursor-pointer" onclick="startAssessment('manual')">
-                        <div class="text-center">
-                            <i class="fas fa-edit text-4xl text-blue-600 mb-4"></i>
-                            <h3 class="text-xl font-semibold mb-3">Manual Entry</h3>
-                            <p class="text-gray-600 mb-6">Complete the comprehensive health assessment form step by step</p>
-                            <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>Demographics & Biometrics</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>60+ Lab Biomarkers</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>Family History (3 generations)</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>Mental Health Screening</li>
-                            </ul>
-                            <button class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition">
-                                Start Assessment
-                            </button>
-                        </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Biological Age -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 text-center">
+                        <i class="fas fa-dna text-3xl text-blue-600 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Biological Age</h3>
+                        <p class="text-2xl font-bold text-blue-600">4 Methods</p>
+                        <p class="text-sm text-gray-600">Phenotypic, Klemera-Doubal, Metabolic, Telomere</p>
                     </div>
 
-                    <!-- File Upload -->
-                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover cursor-pointer" onclick="startAssessment('upload')">
-                        <div class="text-center">
-                            <i class="fas fa-upload text-4xl text-green-600 mb-4"></i>
-                            <h3 class="text-xl font-semibold mb-3">File Upload</h3>
-                            <p class="text-gray-600 mb-6">Upload your existing lab reports and medical records</p>
-                            <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>PDF Lab Reports</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>CSV Data Files</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>Automatic Data Extraction</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>AI-Powered Analysis</li>
-                            </ul>
-                            <button class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition">
-                                Upload Files
-                            </button>
-                        </div>
+                    <!-- Disease Risk -->
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 text-center">
+                        <i class="fas fa-shield-alt text-3xl text-red-600 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Disease Risk</h3>
+                        <p class="text-2xl font-bold text-red-600">7 Categories</p>
+                        <p class="text-sm text-gray-600">Cardiovascular, Diabetes, Kidney, Liver</p>
                     </div>
 
-                    <!-- API Integration -->
-                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover cursor-pointer" onclick="startAssessment('api')">
-                        <div class="text-center">
-                            <i class="fas fa-plug text-4xl text-purple-600 mb-4"></i>
-                            <h3 class="text-xl font-semibold mb-3">API Integration</h3>
-                            <p class="text-gray-600 mb-6">Connect directly with your healthcare provider's system</p>
-                            <ul class="text-sm text-gray-500 text-left space-y-2 mb-6">
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>HL7 FHIR Compatible</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>Epic MyChart</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>Real-time Data Sync</li>
-                                <li><i class="fas fa-check text-green-500 mr-2"></i>Secure Integration</li>
-                            </ul>
-                            <button class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition">
-                                Connect API
-                            </button>
-                        </div>
+                    <!-- Functional Medicine -->
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 text-center">
+                        <i class="fas fa-leaf text-3xl text-green-600 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Functional Medicine</h3>
+                        <p class="text-2xl font-bold text-green-600">12 Systems</p>
+                        <p class="text-sm text-gray-600">Root-cause analysis & optimization</p>
+                    </div>
+
+                    <!-- Comprehensive Report -->
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 text-center">
+                        <i class="fas fa-file-medical text-3xl text-orange-600 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Professional Report</h3>
+                        <p class="text-2xl font-bold text-orange-600">14 Sections</p>
+                        <p class="text-sm text-gray-600">Complete protocols & recommendations</p>
                     </div>
                 </div>
-            </section>
-
-            <!-- Sample Report Preview -->
-            <section class="bg-white py-12 rounded-lg shadow-lg">
-                <div class="max-w-7xl mx-auto px-4">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">System Status - Fully Operational</h2>
-                        <p class="text-lg text-gray-600">Your Longenix Health Assessment System is ready for use</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 text-center">
-                            <i class="fas fa-dna text-3xl text-blue-600 mb-3"></i>
-                            <h3 class="font-semibold text-gray-800 mb-2">Biological Age</h3>
-                            <p class="text-2xl font-bold text-blue-600">Ready</p>
-                            <p class="text-sm text-gray-600">4 calculation methods</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 text-center">
-                            <i class="fas fa-shield-alt text-3xl text-green-600 mb-3"></i>
-                            <h3 class="font-semibold text-gray-800 mb-2">Risk Assessment</h3>
-                            <p class="text-2xl font-bold text-green-600">Active</p>
-                            <p class="text-sm text-gray-600">7 categories ready</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 text-center">
-                            <i class="fas fa-chart-line text-3xl text-purple-600 mb-3"></i>
-                            <h3 class="font-semibold text-gray-800 mb-2">Health Analysis</h3>
-                            <p class="text-2xl font-bold text-purple-600">Online</p>
-                            <p class="text-sm text-gray-600">12 systems ready</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 text-center">
-                            <i class="fas fa-lightbulb text-3xl text-orange-600 mb-3"></i>
-                            <h3 class="font-semibold text-gray-800 mb-2">Protocols</h3>
-                            <p class="text-2xl font-bold text-orange-600">Ready</p>
-                            <p class="text-sm text-gray-600">Personalized recommendations</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -237,13 +227,17 @@
         </div>
     </footer>
 
-    <script>
-        console.log('Longenix Health System - Starting authentication...');
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 text-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-gray-600">Processing assessment data...</p>
+        </div>
+    </div>
 
+    <script>
         // Authentication system
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, setting up authentication...');
-            
             const authForm = document.getElementById('authForm');
             const authModal = document.getElementById('authModal');
             const mainContent = document.getElementById('mainContent');
@@ -252,27 +246,18 @@
 
             authForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                console.log('Form submitted...');
                 
                 const password = document.getElementById('systemPassword').value;
                 const country = document.getElementById('countrySelect').value;
                 
-                console.log('Password entered:', password);
-                console.log('Country selected:', country);
-                console.log('Password match:', password === '#*LonGenix42');
-                
                 if (password === '#*LonGenix42' && country) {
-                    console.log('Authentication successful!');
                     authModal.classList.add('hidden');
                     mainContent.classList.remove('hidden');
                     selectedCountry.textContent = country;
                     sessionStorage.setItem('authenticated', 'true');
                     sessionStorage.setItem('country', country);
                 } else {
-                    console.log('Authentication failed');
                     authError.classList.remove('hidden');
-                    document.getElementById('authErrorMessage').textContent = 
-                        'Invalid password or country not selected. Please try again.';
                 }
             });
 
@@ -295,18 +280,25 @@
             }
         });
 
-        // Assessment methods
-        function startAssessment(method) {
+        // Data entry methods
+        function startDataEntry(method) {
+            const country = sessionStorage.getItem('country');
+            
             if (method === 'manual') {
-                alert('Manual Assessment: This will open the comprehensive health assessment form with demographics, biometrics, lab values, and mental health screening.');
+                window.location.href = `assessment-form.html?country=${country}`;
             } else if (method === 'upload') {
-                alert('File Upload: This will allow you to upload PDF lab reports and medical records for automatic data extraction.');
-            } else if (method === 'api') {
-                alert('API Integration: This will connect with healthcare provider systems like Epic MyChart and Cerner Health.');
+                window.location.href = `file-upload.html?country=${country}`;
+            } else if (method === 'demo') {
+                // Load demo data and redirect to report
+                sessionStorage.setItem('demo_data', 'true');
+                window.location.href = `comprehensive-report.html?demo=true&country=${country}`;
             }
         }
 
-        console.log('Longenix Health System - Fully loaded and ready!');
+        // Show loading overlay
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
