@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Assessment Form - Longenix Health</title>
+    <title>Comprehensive Health Assessment Form - Longenix Health</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <link href="./css/styles.css" rel="stylesheet">
@@ -14,8 +14,8 @@
         <div class="max-w-7xl mx-auto px-6 py-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <h1 class="text-2xl font-bold">Health Assessment Form</h1>
-                    <p class="text-blue-100">Comprehensive health evaluation</p>
+                    <h1 class="text-2xl font-bold">Comprehensive Health Assessment Form</h1>
+                    <p class="text-blue-100">Complete health evaluation with biological age analysis</p>
                 </div>
                 <a href="index.html" class="bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30 transition">
                     <i class="fas fa-arrow-left mr-2"></i>Back to Home
@@ -41,7 +41,7 @@
     <div class="max-w-4xl mx-auto px-6 py-8">
         <form id="assessmentForm" class="bg-white rounded-lg shadow-lg p-8">
             
-            <!-- Step 1: Demographics -->
+            <!-- Step 1: Demographics & Personal Information -->
             <div id="step1" class="assessment-step">
                 <div class="text-center mb-8">
                     <i class="fas fa-user text-4xl text-blue-600 mb-4"></i>
@@ -71,6 +71,21 @@
                     </div>
                     
                     <div class="form-group">
+                        <label class="form-label">Ethnicity</label>
+                        <select name="ethnicity" class="form-select">
+                            <option value="">Select ethnicity</option>
+                            <option value="caucasian">Caucasian</option>
+                            <option value="african_american">African American</option>
+                            <option value="hispanic">Hispanic/Latino</option>
+                            <option value="asian">Asian</option>
+                            <option value="native_american">Native American</option>
+                            <option value="pacific_islander">Pacific Islander</option>
+                            <option value="mixed">Mixed</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
                         <label class="form-label">Email Address</label>
                         <input type="email" name="email" class="form-input" placeholder="your.email@example.com">
                     </div>
@@ -88,10 +103,38 @@
                             <option value="Philippines">Philippines</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Occupation</label>
+                        <input type="text" name="occupation" class="form-input" placeholder="Your occupation">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Education Level</label>
+                        <select name="education" class="form-select">
+                            <option value="">Select education level</option>
+                            <option value="high_school">High School</option>
+                            <option value="some_college">Some College</option>
+                            <option value="bachelors">Bachelor's Degree</option>
+                            <option value="masters">Master's Degree</option>
+                            <option value="doctorate">Doctorate</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Marital Status</label>
+                        <select name="maritalStatus" class="form-select">
+                            <option value="">Select status</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                            <option value="widowed">Widowed</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- Step 2: Biometrics -->
+            <!-- Step 2: Biometrics & Vital Signs -->
             <div id="step2" class="assessment-step hidden">
                 <div class="text-center mb-8">
                     <i class="fas fa-ruler text-4xl text-green-600 mb-4"></i>
@@ -112,12 +155,22 @@
                     
                     <div class="form-group">
                         <label class="form-label">Waist Circumference (cm)</label>
-                        <input type="number" name="waist" class="form-input" placeholder="85" min="50" max="200">
+                        <input type="number" name="waistCircumference" class="form-input" placeholder="85" min="50" max="200">
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">Hip Circumference (cm)</label>
-                        <input type="number" name="hip" class="form-input" placeholder="95" min="60" max="200">
+                        <input type="number" name="hipCircumference" class="form-input" placeholder="95" min="60" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Body Fat Percentage (%)</label>
+                        <input type="number" name="bodyFatPercentage" class="form-input" placeholder="25" min="5" max="50" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Resting Heart Rate (BPM)</label>
+                        <input type="number" name="restingHeartRate" class="form-input" placeholder="70" min="40" max="150">
                     </div>
                     
                     <div class="form-group">
@@ -129,12 +182,22 @@
                         <label class="form-label">Diastolic Blood Pressure (mmHg)</label>
                         <input type="number" name="diastolicBP" class="form-input" placeholder="80" min="40" max="150">
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Body Temperature (°F)</label>
+                        <input type="number" name="bodyTemperature" class="form-input" placeholder="98.6" min="95" max="105" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Respiratory Rate (breaths/min)</label>
+                        <input type="number" name="respiratoryRate" class="form-input" placeholder="16" min="10" max="30">
+                    </div>
                 </div>
 
                 <!-- Calculated Values Display -->
                 <div id="calculatedValues" class="mt-6 p-4 bg-blue-50 rounded-lg">
                     <h3 class="text-lg font-semibold text-blue-800 mb-3">Calculated Values</h3>
-                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                    <div class="grid md:grid-cols-4 gap-4 text-sm">
                         <div>
                             <span class="text-gray-600">BMI:</span>
                             <span id="bmiValue" class="font-semibold ml-2">--</span>
@@ -147,6 +210,965 @@
                             <span class="text-gray-600">BP Classification:</span>
                             <span id="bpClassification" class="font-semibold ml-2">--</span>
                         </div>
+                        <div>
+                            <span class="text-gray-600">HR Classification:</span>
+                            <span id="hrClassification" class="font-semibold ml-2">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Laboratory Biomarkers (Part 1 - Basic Metabolic Panel) -->
+            <div id="step3" class="assessment-step hidden">
+                <div class="text-center mb-8">
+                    <i class="fas fa-vial text-4xl text-purple-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Laboratory Biomarkers - Part 1</h2>
+                    <p class="text-gray-600">Basic Metabolic Panel and Glucose Metabolism</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Basic Metabolic Panel -->
+                    <div class="bg-purple-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-purple-800 mb-4">Basic Metabolic Panel</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Glucose (mg/dL)</label>
+                                <input type="number" name="glucose" class="form-input" placeholder="90" min="50" max="400" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 70-99 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">BUN (mg/dL)</label>
+                                <input type="number" name="bun" class="form-input" placeholder="15" min="5" max="50" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 6-24 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Creatinine (mg/dL)</label>
+                                <input type="number" name="creatinine" class="form-input" placeholder="1.0" min="0.5" max="5.0" step="0.01">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.6-1.2 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">eGFR (mL/min/1.73m²)</label>
+                                <input type="number" name="egfr" class="form-input" placeholder="90" min="10" max="150">
+                                <p class="text-xs text-gray-500 mt-1">Normal: >90 mL/min/1.73m²</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Sodium (mEq/L)</label>
+                                <input type="number" name="sodium" class="form-input" placeholder="140" min="120" max="160">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 136-145 mEq/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Potassium (mEq/L)</label>
+                                <input type="number" name="potassium" class="form-input" placeholder="4.0" min="2.0" max="6.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 3.5-5.0 mEq/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Chloride (mEq/L)</label>
+                                <input type="number" name="chloride" class="form-input" placeholder="102" min="90" max="115">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 98-107 mEq/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">CO2 (mEq/L)</label>
+                                <input type="number" name="co2" class="form-input" placeholder="24" min="15" max="35">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 22-29 mEq/L</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Glucose Metabolism -->
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-blue-800 mb-4">Glucose Metabolism</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">HbA1c (%)</label>
+                                <input type="number" name="hba1c" class="form-input" placeholder="5.4" min="4.0" max="15.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: <5.7%</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Insulin (μU/mL)</label>
+                                <input type="number" name="insulin" class="form-input" placeholder="8" min="1" max="50" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 2.6-24.9 μU/mL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">C-Peptide (ng/mL)</label>
+                                <input type="number" name="cPeptide" class="form-input" placeholder="2.0" min="0.5" max="5.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 1.1-4.4 ng/mL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Laboratory Biomarkers (Part 2 - Lipid Panel & Liver Function) -->
+            <div id="step4" class="assessment-step hidden">
+                <div class="text-center mb-8">
+                    <i class="fas fa-heartbeat text-4xl text-red-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Laboratory Biomarkers - Part 2</h2>
+                    <p class="text-gray-600">Lipid Profile and Liver Function Tests</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Lipid Panel -->
+                    <div class="bg-red-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-red-800 mb-4">Comprehensive Lipid Panel</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Total Cholesterol (mg/dL)</label>
+                                <input type="number" name="totalCholesterol" class="form-input" placeholder="200" min="100" max="400">
+                                <p class="text-xs text-gray-500 mt-1">Optimal: <200 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">HDL Cholesterol (mg/dL)</label>
+                                <input type="number" name="hdlCholesterol" class="form-input" placeholder="60" min="20" max="120">
+                                <p class="text-xs text-gray-500 mt-1">Good: >40 (M), >50 (F) mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">LDL Cholesterol (mg/dL)</label>
+                                <input type="number" name="ldlCholesterol" class="form-input" placeholder="100" min="50" max="300">
+                                <p class="text-xs text-gray-500 mt-1">Optimal: <100 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Triglycerides (mg/dL)</label>
+                                <input type="number" name="triglycerides" class="form-input" placeholder="150" min="50" max="1000">
+                                <p class="text-xs text-gray-500 mt-1">Normal: <150 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Non-HDL Cholesterol (mg/dL)</label>
+                                <input type="number" name="nonHdlCholesterol" class="form-input" placeholder="130" min="50" max="300">
+                                <p class="text-xs text-gray-500 mt-1">Optimal: <130 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">ApoB (mg/dL)</label>
+                                <input type="number" name="apoB" class="form-input" placeholder="90" min="30" max="200">
+                                <p class="text-xs text-gray-500 mt-1">Normal: <90 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">ApoA1 (mg/dL)</label>
+                                <input type="number" name="apoA1" class="form-input" placeholder="150" min="80" max="250">
+                                <p class="text-xs text-gray-500 mt-1">Normal: >120 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Lp(a) (mg/dL)</label>
+                                <input type="number" name="lipoproteinA" class="form-input" placeholder="20" min="0" max="100">
+                                <p class="text-xs text-gray-500 mt-1">Optimal: <30 mg/dL</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liver Function Tests -->
+                    <div class="bg-yellow-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-yellow-800 mb-4">Liver Function Tests</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">ALT (U/L)</label>
+                                <input type="number" name="alt" class="form-input" placeholder="25" min="5" max="200">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 7-56 U/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">AST (U/L)</label>
+                                <input type="number" name="ast" class="form-input" placeholder="20" min="5" max="200">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 10-40 U/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Albumin (g/dL)</label>
+                                <input type="number" name="albumin" class="form-input" placeholder="4.2" min="2.0" max="6.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 3.5-5.0 g/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Total Bilirubin (mg/dL)</label>
+                                <input type="number" name="totalBilirubin" class="form-input" placeholder="0.8" min="0.1" max="5.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.3-1.2 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Direct Bilirubin (mg/dL)</label>
+                                <input type="number" name="directBilirubin" class="form-input" placeholder="0.2" min="0.0" max="2.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.0-0.3 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Alkaline Phosphatase (U/L)</label>
+                                <input type="number" name="alkalinePhosphatase" class="form-input" placeholder="70" min="20" max="200">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 44-147 U/L</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Laboratory Biomarkers (Part 3 - Blood Count & Inflammatory Markers) -->
+            <div id="step5" class="assessment-step hidden">
+                <div class="text-center mb-8">
+                    <i class="fas fa-microscope text-4xl text-green-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Laboratory Biomarkers - Part 3</h2>
+                    <p class="text-gray-600">Complete Blood Count and Inflammatory Markers</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Complete Blood Count -->
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-green-800 mb-4">Complete Blood Count (CBC)</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">White Blood Cells (K/μL)</label>
+                                <input type="number" name="wbc" class="form-input" placeholder="7.0" min="1.0" max="20.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 4.5-11.0 K/μL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Red Blood Cells (M/μL)</label>
+                                <input type="number" name="rbc" class="form-input" placeholder="4.5" min="2.0" max="7.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 4.2-5.4 M/μL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Hemoglobin (g/dL)</label>
+                                <input type="number" name="hemoglobin" class="form-input" placeholder="14.0" min="8.0" max="20.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 12.0-16.0 g/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Hematocrit (%)</label>
+                                <input type="number" name="hematocrit" class="form-input" placeholder="42" min="25" max="60" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 36-46%</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Platelets (K/μL)</label>
+                                <input type="number" name="platelets" class="form-input" placeholder="300" min="100" max="800">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 150-450 K/μL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mean Cell Volume (fL)</label>
+                                <input type="number" name="mcv" class="form-input" placeholder="88" min="70" max="110" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 80-100 fL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mean Cell Hemoglobin (pg)</label>
+                                <input type="number" name="mch" class="form-input" placeholder="30" min="20" max="40" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 27-33 pg</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">MCHC (g/dL)</label>
+                                <input type="number" name="mchc" class="form-input" placeholder="34" min="30" max="38" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 32-36 g/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Red Cell Distribution Width (%)</label>
+                                <input type="number" name="rdw" class="form-input" placeholder="13" min="10" max="20" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 11.5-14.5%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- White Blood Cell Differential -->
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-blue-800 mb-4">White Blood Cell Differential</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Neutrophils (%)</label>
+                                <input type="number" name="neutrophils" class="form-input" placeholder="60" min="30" max="80" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 50-70%</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Lymphocytes (%)</label>
+                                <input type="number" name="lymphocytes" class="form-input" placeholder="30" min="15" max="50" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 20-40%</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Monocytes (%)</label>
+                                <input type="number" name="monocytes" class="form-input" placeholder="7" min="2" max="15" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 2-8%</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Eosinophils (%)</label>
+                                <input type="number" name="eosinophils" class="form-input" placeholder="2" min="0" max="10" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 1-4%</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Basophils (%)</label>
+                                <input type="number" name="basophils" class="form-input" placeholder="1" min="0" max="5" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.5-1%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inflammatory Markers -->
+                    <div class="bg-red-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-red-800 mb-4">Inflammatory Markers</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">C-Reactive Protein (mg/L)</label>
+                                <input type="number" name="cReactiveProtein" class="form-input" placeholder="2.0" min="0.1" max="50.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Low risk: <3.0 mg/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">ESR (mm/hr)</label>
+                                <input type="number" name="esr" class="form-input" placeholder="15" min="1" max="100">
+                                <p class="text-xs text-gray-500 mt-1">Normal: <20 mm/hr</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Fibrinogen (mg/dL)</label>
+                                <input type="number" name="fibrinogen" class="form-input" placeholder="300" min="150" max="600">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 200-400 mg/dL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Laboratory Biomarkers (Part 4 - Hormones & Vitamins) -->
+            <div id="step6" class="assessment-step hidden">
+                <div class="text-center mb-8">
+                    <i class="fas fa-flask text-4xl text-orange-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Laboratory Biomarkers - Part 4</h2>
+                    <p class="text-gray-600">Hormones, Vitamins, and Minerals</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Thyroid Function -->
+                    <div class="bg-orange-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-orange-800 mb-4">Thyroid Function Tests</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">TSH (mIU/L)</label>
+                                <input type="number" name="tsh" class="form-input" placeholder="2.5" min="0.1" max="20.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.4-4.0 mIU/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Free T4 (ng/dL)</label>
+                                <input type="number" name="freeT4" class="form-input" placeholder="1.2" min="0.5" max="3.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.8-1.8 ng/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Free T3 (pg/mL)</label>
+                                <input type="number" name="freeT3" class="form-input" placeholder="3.2" min="1.0" max="6.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 2.3-4.2 pg/mL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Reverse T3 (ng/dL)</label>
+                                <input type="number" name="reverseT3" class="form-input" placeholder="18" min="5" max="50">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 9.2-24.1 ng/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Anti-TPO (IU/mL)</label>
+                                <input type="number" name="antiTPO" class="form-input" placeholder="10" min="0" max="500">
+                                <p class="text-xs text-gray-500 mt-1">Normal: <34 IU/mL</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vitamins -->
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-green-800 mb-4">Vitamins</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Vitamin D, 25-OH (ng/mL)</label>
+                                <input type="number" name="vitaminD" class="form-input" placeholder="35" min="5" max="100" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Optimal: 30-100 ng/mL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Vitamin B12 (pg/mL)</label>
+                                <input type="number" name="vitaminB12" class="form-input" placeholder="500" min="100" max="2000">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 300-900 pg/mL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Folate (ng/mL)</label>
+                                <input type="number" name="folate" class="form-input" placeholder="12" min="2" max="30" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: >3.0 ng/mL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Vitamin C (mg/dL)</label>
+                                <input type="number" name="vitaminC" class="form-input" placeholder="1.2" min="0.2" max="3.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.6-2.0 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Vitamin A (μg/dL)</label>
+                                <input type="number" name="vitaminA" class="form-input" placeholder="60" min="20" max="120">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 30-95 μg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Vitamin E (mg/L)</label>
+                                <input type="number" name="vitaminE" class="form-input" placeholder="12" min="5" max="25">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 5.5-17.0 mg/L</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minerals -->
+                    <div class="bg-purple-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-purple-800 mb-4">Essential Minerals</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Iron (μg/dL)</label>
+                                <input type="number" name="iron" class="form-input" placeholder="100" min="30" max="200">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 60-170 μg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ferritin (ng/mL)</label>
+                                <input type="number" name="ferritin" class="form-input" placeholder="80" min="10" max="500">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 15-200 ng/mL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">TIBC (μg/dL)</label>
+                                <input type="number" name="tibc" class="form-input" placeholder="350" min="200" max="500">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 250-450 μg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Transferrin Saturation (%)</label>
+                                <input type="number" name="transferrinSaturation" class="form-input" placeholder="28" min="10" max="50">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 20-50%</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Magnesium (mg/dL)</label>
+                                <input type="number" name="magnesium" class="form-input" placeholder="2.0" min="1.0" max="3.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 1.7-2.2 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Zinc (μg/dL)</label>
+                                <input type="number" name="zinc" class="form-input" placeholder="95" min="50" max="150">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 70-120 μg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Selenium (μg/L)</label>
+                                <input type="number" name="selenium" class="form-input" placeholder="110" min="50" max="200">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 70-150 μg/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Copper (μg/dL)</label>
+                                <input type="number" name="copper" class="form-input" placeholder="110" min="50" max="200">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 70-140 μg/dL</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Biomarkers -->
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-blue-800 mb-4">Additional Biomarkers</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Homocysteine (μmol/L)</label>
+                                <input type="number" name="homocysteine" class="form-input" placeholder="8" min="3" max="30" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Optimal: <7 μmol/L</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Uric Acid (mg/dL)</label>
+                                <input type="number" name="uricAcid" class="form-input" placeholder="5.5" min="2.0" max="12.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 3.4-7.0 mg/dL</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">CoQ10 (μg/mL)</label>
+                                <input type="number" name="coq10" class="form-input" placeholder="1.2" min="0.5" max="3.0" step="0.1">
+                                <p class="text-xs text-gray-500 mt-1">Normal: 0.7-2.5 μg/mL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Lifestyle & Family History -->
+            <div id="step7" class="assessment-step hidden">
+                <div class="text-center mb-8">
+                    <i class="fas fa-users text-4xl text-indigo-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Lifestyle & Family History</h2>
+                    <p class="text-gray-600">Lifestyle factors and three-generation family history</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Lifestyle Factors -->
+                    <div class="bg-indigo-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-indigo-800 mb-4">Lifestyle Assessment</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="form-group">
+                                    <label class="form-label">Smoking Status</label>
+                                    <select name="smokingStatus" class="form-select">
+                                        <option value="">Select status</option>
+                                        <option value="never">Never smoked</option>
+                                        <option value="former">Former smoker</option>
+                                        <option value="current">Current smoker</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Exercise Frequency (times per week)</label>
+                                    <input type="number" name="exerciseFrequency" class="form-input" placeholder="3" min="0" max="14">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Exercise Duration (minutes per session)</label>
+                                    <input type="number" name="exerciseDuration" class="form-input" placeholder="45" min="0" max="180">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Exercise Types (select all that apply)</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="exerciseTypes" value="cardio" class="mr-2">
+                                            <span class="text-sm">Cardiovascular (running, cycling, swimming)</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="exerciseTypes" value="strength" class="mr-2">
+                                            <span class="text-sm">Strength training (weights, resistance)</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="exerciseTypes" value="flexibility" class="mr-2">
+                                            <span class="text-sm">Flexibility (yoga, stretching)</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="exerciseTypes" value="sports" class="mr-2">
+                                            <span class="text-sm">Sports activities</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Sleep Hours (per night)</label>
+                                    <input type="number" name="sleepHours" class="form-input" placeholder="7" min="3" max="12" step="0.5">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Sleep Quality</label>
+                                    <select name="sleepQuality" class="form-select">
+                                        <option value="">Select quality</option>
+                                        <option value="poor">Poor</option>
+                                        <option value="fair">Fair</option>
+                                        <option value="good">Good</option>
+                                        <option value="excellent">Excellent</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="form-group">
+                                    <label class="form-label">Alcohol Consumption</label>
+                                    <select name="alcoholConsumption" class="form-select">
+                                        <option value="">Select consumption level</option>
+                                        <option value="none">None</option>
+                                        <option value="light">Light (1-3 drinks/week)</option>
+                                        <option value="moderate">Moderate (4-14 drinks/week)</option>
+                                        <option value="heavy">Heavy (>14 drinks/week)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Stress Level</label>
+                                    <select name="stressLevel" class="form-select">
+                                        <option value="">Select stress level</option>
+                                        <option value="low">Low</option>
+                                        <option value="moderate">Moderate</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Diet Type</label>
+                                    <select name="dietType" class="form-select">
+                                        <option value="">Select diet type</option>
+                                        <option value="standard">Standard American Diet</option>
+                                        <option value="mediterranean">Mediterranean</option>
+                                        <option value="plant_based">Plant-based</option>
+                                        <option value="ketogenic">Ketogenic</option>
+                                        <option value="paleo">Paleo</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Water Intake (glasses per day)</label>
+                                    <input type="number" name="waterIntake" class="form-input" placeholder="8" min="0" max="20">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Caffeine Intake</label>
+                                    <select name="caffeineIntake" class="form-select">
+                                        <option value="">Select intake level</option>
+                                        <option value="none">None</option>
+                                        <option value="low">Low (1 cup/day)</option>
+                                        <option value="moderate">Moderate (2-3 cups/day)</option>
+                                        <option value="high">High (>3 cups/day)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Current Medications</label>
+                                    <textarea name="currentMedications" class="form-input" rows="3" placeholder="List current medications and dosages"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Supplements</label>
+                                    <textarea name="supplements" class="form-input" rows="3" placeholder="List current supplements and dosages"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family History -->
+                    <div class="bg-pink-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-pink-800 mb-4">Three-Generation Family History</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Paternal Side -->
+                            <div>
+                                <h4 class="font-semibold text-blue-800 mb-3">Paternal Side</h4>
+                                
+                                <div class="space-y-4">
+                                    <div class="bg-white rounded-lg p-4">
+                                        <h5 class="font-medium mb-2">Paternal Grandfather</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center space-x-2">
+                                                <input type="radio" name="paternalGrandfatherStatus" value="living" id="pgf_living">
+                                                <label for="pgf_living" class="text-sm">Living</label>
+                                                <input type="radio" name="paternalGrandfatherStatus" value="deceased" id="pgf_deceased">
+                                                <label for="pgf_deceased" class="text-sm">Deceased</label>
+                                            </div>
+                                            <input type="number" name="paternalGrandfatherAge" class="form-input" placeholder="Age (current or at death)" min="0" max="120">
+                                            <textarea name="paternalGrandfatherConditions" class="form-input" rows="2" placeholder="Health conditions/cause of death"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white rounded-lg p-4">
+                                        <h5 class="font-medium mb-2">Paternal Grandmother</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center space-x-2">
+                                                <input type="radio" name="paternalGrandmotherStatus" value="living" id="pgm_living">
+                                                <label for="pgm_living" class="text-sm">Living</label>
+                                                <input type="radio" name="paternalGrandmotherStatus" value="deceased" id="pgm_deceased">
+                                                <label for="pgm_deceased" class="text-sm">Deceased</label>
+                                            </div>
+                                            <input type="number" name="paternalGrandmotherAge" class="form-input" placeholder="Age (current or at death)" min="0" max="120">
+                                            <textarea name="paternalGrandmotherConditions" class="form-input" rows="2" placeholder="Health conditions/cause of death"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white rounded-lg p-4">
+                                        <h5 class="font-medium mb-2">Father</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center space-x-2">
+                                                <input type="radio" name="fatherStatus" value="living" id="father_living">
+                                                <label for="father_living" class="text-sm">Living</label>
+                                                <input type="radio" name="fatherStatus" value="deceased" id="father_deceased">
+                                                <label for="father_deceased" class="text-sm">Deceased</label>
+                                            </div>
+                                            <input type="number" name="fatherAge" class="form-input" placeholder="Age (current or at death)" min="0" max="120">
+                                            <textarea name="fatherConditions" class="form-input" rows="2" placeholder="Health conditions/cause of death"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Maternal Side -->
+                            <div>
+                                <h4 class="font-semibold text-pink-800 mb-3">Maternal Side</h4>
+                                
+                                <div class="space-y-4">
+                                    <div class="bg-white rounded-lg p-4">
+                                        <h5 class="font-medium mb-2">Maternal Grandfather</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center space-x-2">
+                                                <input type="radio" name="maternalGrandfatherStatus" value="living" id="mgf_living">
+                                                <label for="mgf_living" class="text-sm">Living</label>
+                                                <input type="radio" name="maternalGrandfatherStatus" value="deceased" id="mgf_deceased">
+                                                <label for="mgf_deceased" class="text-sm">Deceased</label>
+                                            </div>
+                                            <input type="number" name="maternalGrandfatherAge" class="form-input" placeholder="Age (current or at death)" min="0" max="120">
+                                            <textarea name="maternalGrandfatherConditions" class="form-input" rows="2" placeholder="Health conditions/cause of death"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white rounded-lg p-4">
+                                        <h5 class="font-medium mb-2">Maternal Grandmother</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center space-x-2">
+                                                <input type="radio" name="maternalGrandmotherStatus" value="living" id="mgm_living">
+                                                <label for="mgm_living" class="text-sm">Living</label>
+                                                <input type="radio" name="maternalGrandmotherStatus" value="deceased" id="mgm_deceased">
+                                                <label for="mgm_deceased" class="text-sm">Deceased</label>
+                                            </div>
+                                            <input type="number" name="maternalGrandmotherAge" class="form-input" placeholder="Age (current or at death)" min="0" max="120">
+                                            <textarea name="maternalGrandmotherConditions" class="form-input" rows="2" placeholder="Health conditions/cause of death"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white rounded-lg p-4">
+                                        <h5 class="font-medium mb-2">Mother</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center space-x-2">
+                                                <input type="radio" name="motherStatus" value="living" id="mother_living">
+                                                <label for="mother_living" class="text-sm">Living</label>
+                                                <input type="radio" name="motherStatus" value="deceased" id="mother_deceased">
+                                                <label for="mother_deceased" class="text-sm">Deceased</label>
+                                            </div>
+                                            <input type="number" name="motherAge" class="form-input" placeholder="Age (current or at death)" min="0" max="120">
+                                            <textarea name="motherConditions" class="form-input" rows="2" placeholder="Health conditions/cause of death"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Siblings -->
+                        <div class="mt-6">
+                            <h4 class="font-semibold text-gray-800 mb-3">Siblings</h4>
+                            <div class="bg-white rounded-lg p-4">
+                                <div class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Number of Siblings</label>
+                                        <input type="number" name="numberOfSiblings" class="form-input" placeholder="0" min="0" max="10">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Sibling Health Information</label>
+                                        <textarea name="siblingHealthInfo" class="form-input" rows="3" placeholder="Age, gender, and health conditions for each sibling"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8: Mental Health & ATM Timeline -->
+            <div id="step8" class="assessment-step hidden">
+                <div class="text-center mb-8">
+                    <i class="fas fa-brain text-4xl text-teal-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Mental Health & Medical History</h2>
+                    <p class="text-gray-600">Mental health screening and ATM (Accidents, Traumas, Major illnesses) timeline</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- PHQ-9 Depression Screening -->
+                    <div class="bg-teal-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-teal-800 mb-4">PHQ-9 Depression Screening</h3>
+                        <p class="text-sm text-gray-600 mb-4">Over the last 2 weeks, how often have you been bothered by any of the following problems?</p>
+                        
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 gap-4">
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">1. Little interest or pleasure in doing things</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q1" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q1" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q1" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q1" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">2. Feeling down, depressed, or hopeless</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q2" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q2" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q2" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q2" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">3. Trouble falling or staying asleep, or sleeping too much</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q3" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q3" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q3" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q3" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">4. Feeling tired or having little energy</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q4" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q4" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q4" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q4" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">5. Poor appetite or overeating</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q5" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q5" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q5" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q5" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">6. Feeling bad about yourself or that you are a failure</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q6" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q6" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q6" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q6" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">7. Trouble concentrating on things</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q7" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q7" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q7" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q7" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">8. Moving or speaking slowly, or being restless/fidgety</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q8" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q8" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q8" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q8" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="phq9-question">
+                                    <p class="font-medium mb-2">9. Thoughts of death or self-harm</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center"><input type="radio" name="phq9_q9" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q9" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q9" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                        <label class="flex items-center"><input type="radio" name="phq9_q9" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-teal-100 rounded">
+                            <p class="text-sm text-teal-800">
+                                <strong>PHQ-9 Score:</strong> <span id="phq9Score">0</span> / 27 
+                                <span id="phq9Interpretation" class="ml-2 font-semibold"></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- GAD-7 Anxiety Screening -->
+                    <div class="bg-yellow-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-yellow-800 mb-4">GAD-7 Anxiety Screening</h3>
+                        <p class="text-sm text-gray-600 mb-4">Over the last 2 weeks, how often have you been bothered by the following problems?</p>
+                        
+                        <div class="space-y-4">
+                            <div class="gad7-question">
+                                <p class="font-medium mb-2">1. Feeling nervous, anxious, or on edge</p>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center"><input type="radio" name="gad7_q1" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q1" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q1" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q1" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                </div>
+                            </div>
+
+                            <div class="gad7-question">
+                                <p class="font-medium mb-2">2. Not being able to stop or control worrying</p>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center"><input type="radio" name="gad7_q2" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q2" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q2" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q2" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                </div>
+                            </div>
+
+                            <div class="gad7-question">
+                                <p class="font-medium mb-2">3. Worrying too much about different things</p>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center"><input type="radio" name="gad7_q3" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q3" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q3" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q3" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                </div>
+                            </div>
+
+                            <div class="gad7-question">
+                                <p class="font-medium mb-2">4. Trouble relaxing</p>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center"><input type="radio" name="gad7_q4" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q4" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q4" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q4" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                </div>
+                            </div>
+
+                            <div class="gad7-question">
+                                <p class="font-medium mb-2">5. Being so restless that it's hard to sit still</p>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center"><input type="radio" name="gad7_q5" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q5" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q5" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q5" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                </div>
+                            </div>
+
+                            <div class="gad7-question">
+                                <p class="font-medium mb-2">6. Becoming easily annoyed or irritable</p>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center"><input type="radio" name="gad7_q6" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q6" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q6" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q6" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                </div>
+                            </div>
+
+                            <div class="gad7-question">
+                                <p class="font-medium mb-2">7. Feeling afraid as if something awful might happen</p>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center"><input type="radio" name="gad7_q7" value="0" class="mr-2"><span class="text-sm">Not at all</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q7" value="1" class="mr-2"><span class="text-sm">Several days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q7" value="2" class="mr-2"><span class="text-sm">More than half the days</span></label>
+                                    <label class="flex items-center"><input type="radio" name="gad7_q7" value="3" class="mr-2"><span class="text-sm">Nearly every day</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-yellow-100 rounded">
+                            <p class="text-sm text-yellow-800">
+                                <strong>GAD-7 Score:</strong> <span id="gad7Score">0</span> / 21 
+                                <span id="gad7Interpretation" class="ml-2 font-semibold"></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ATM Timeline -->
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">ATM Timeline (Accidents, Traumas, Major Medical Events)</h3>
+                        <p class="text-sm text-gray-600 mb-4">Please describe any significant accidents, traumas, surgeries, or major medical events in chronological order.</p>
+                        
+                        <div id="atmEventsContainer" class="space-y-4">
+                            <div class="atm-event bg-white rounded-lg p-4 border">
+                                <div class="grid md:grid-cols-3 gap-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Year</label>
+                                        <input type="number" name="atmYear_1" class="form-input" placeholder="2020" min="1900" max="2024">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Age at Event</label>
+                                        <input type="number" name="atmAge_1" class="form-input" placeholder="35" min="0" max="120">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Event Type</label>
+                                        <select name="atmType_1" class="form-select">
+                                            <option value="">Select type</option>
+                                            <option value="accident">Accident</option>
+                                            <option value="surgery">Surgery</option>
+                                            <option value="trauma">Trauma</option>
+                                            <option value="illness">Major Illness</option>
+                                            <option value="injury">Injury</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mt-4 space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Event Description</label>
+                                        <textarea name="atmDescription_1" class="form-input" rows="2" placeholder="Describe the event, its severity, and circumstances"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Treatment/Recovery</label>
+                                        <textarea name="atmTreatment_1" class="form-input" rows="2" placeholder="Treatment received, recovery time, any complications"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Current Impact</label>
+                                        <textarea name="atmCurrentImpact_1" class="form-input" rows="2" placeholder="Any ongoing effects or health implications"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="addATMEvent()" class="mt-4 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+                            <i class="fas fa-plus mr-2"></i>Add Another Event
+                        </button>
                     </div>
                 </div>
             </div>
@@ -175,15 +1197,17 @@
     <script>
         let currentStep = 1;
         const totalSteps = 8;
+        let atmEventCount = 1;
         
-        // Auto-calculate BMI and WHR
+        // Auto-calculate values
         function updateCalculations() {
             const height = parseFloat(document.querySelector('[name="height"]').value) || 0;
             const weight = parseFloat(document.querySelector('[name="weight"]').value) || 0;
-            const waist = parseFloat(document.querySelector('[name="waist"]').value) || 0;
-            const hip = parseFloat(document.querySelector('[name="hip"]').value) || 0;
+            const waist = parseFloat(document.querySelector('[name="waistCircumference"]').value) || 0;
+            const hip = parseFloat(document.querySelector('[name="hipCircumference"]').value) || 0;
             const systolic = parseInt(document.querySelector('[name="systolicBP"]').value) || 0;
             const diastolic = parseInt(document.querySelector('[name="diastolicBP"]').value) || 0;
+            const heartRate = parseInt(document.querySelector('[name="restingHeartRate"]').value) || 0;
             
             // Calculate BMI
             if (height > 0 && weight > 0) {
@@ -208,17 +1232,143 @@
                 
                 document.getElementById('bpClassification').textContent = classification;
             }
+
+            // Heart Rate Classification
+            if (heartRate > 0) {
+                let hrClass = 'Normal';
+                if (heartRate < 60) hrClass = 'Bradycardia';
+                else if (heartRate > 100) hrClass = 'Tachycardia';
+                
+                document.getElementById('hrClassification').textContent = hrClass;
+            }
+        }
+
+        // Update PHQ-9 Score
+        function updatePHQ9Score() {
+            let total = 0;
+            for (let i = 1; i <= 9; i++) {
+                const selected = document.querySelector(`input[name="phq9_q${i}"]:checked`);
+                if (selected) {
+                    total += parseInt(selected.value);
+                }
+            }
+            
+            document.getElementById('phq9Score').textContent = total;
+            
+            let interpretation = '';
+            if (total <= 4) interpretation = 'Minimal depression';
+            else if (total <= 9) interpretation = 'Mild depression';
+            else if (total <= 14) interpretation = 'Moderate depression';
+            else if (total <= 19) interpretation = 'Moderately severe depression';
+            else interpretation = 'Severe depression';
+            
+            document.getElementById('phq9Interpretation').textContent = interpretation;
+        }
+
+        // Update GAD-7 Score
+        function updateGAD7Score() {
+            let total = 0;
+            for (let i = 1; i <= 7; i++) {
+                const selected = document.querySelector(`input[name="gad7_q${i}"]:checked`);
+                if (selected) {
+                    total += parseInt(selected.value);
+                }
+            }
+            
+            document.getElementById('gad7Score').textContent = total;
+            
+            let interpretation = '';
+            if (total <= 4) interpretation = 'Minimal anxiety';
+            else if (total <= 9) interpretation = 'Mild anxiety';
+            else if (total <= 14) interpretation = 'Moderate anxiety';
+            else interpretation = 'Severe anxiety';
+            
+            document.getElementById('gad7Interpretation').textContent = interpretation;
+        }
+
+        // Add ATM Event
+        function addATMEvent() {
+            atmEventCount++;
+            const container = document.getElementById('atmEventsContainer');
+            const eventDiv = document.createElement('div');
+            eventDiv.className = 'atm-event bg-white rounded-lg p-4 border';
+            eventDiv.innerHTML = `
+                <div class="flex justify-between items-center mb-4">
+                    <h4 class="font-medium">Event ${atmEventCount}</h4>
+                    <button type="button" onclick="removeATMEvent(this)" class="text-red-600 hover:text-red-800">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="form-group">
+                        <label class="form-label">Year</label>
+                        <input type="number" name="atmYear_${atmEventCount}" class="form-input" placeholder="2020" min="1900" max="2024">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age at Event</label>
+                        <input type="number" name="atmAge_${atmEventCount}" class="form-input" placeholder="35" min="0" max="120">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Event Type</label>
+                        <select name="atmType_${atmEventCount}" class="form-select">
+                            <option value="">Select type</option>
+                            <option value="accident">Accident</option>
+                            <option value="surgery">Surgery</option>
+                            <option value="trauma">Trauma</option>
+                            <option value="illness">Major Illness</option>
+                            <option value="injury">Injury</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-4">
+                    <div class="form-group">
+                        <label class="form-label">Event Description</label>
+                        <textarea name="atmDescription_${atmEventCount}" class="form-input" rows="2" placeholder="Describe the event, its severity, and circumstances"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Treatment/Recovery</label>
+                        <textarea name="atmTreatment_${atmEventCount}" class="form-input" rows="2" placeholder="Treatment received, recovery time, any complications"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Current Impact</label>
+                        <textarea name="atmCurrentImpact_${atmEventCount}" class="form-input" rows="2" placeholder="Any ongoing effects or health implications"></textarea>
+                    </div>
+                </div>
+            `;
+            container.appendChild(eventDiv);
+        }
+
+        function removeATMEvent(button) {
+            button.closest('.atm-event').remove();
         }
         
-        // Add event listeners for auto-calculation
+        // Add event listeners
         document.addEventListener('DOMContentLoaded', function() {
-            const calcInputs = ['height', 'weight', 'waist', 'hip', 'systolicBP', 'diastolicBP'];
+            // Auto-calculation inputs
+            const calcInputs = ['height', 'weight', 'waistCircumference', 'hipCircumference', 'systolicBP', 'diastolicBP', 'restingHeartRate'];
             calcInputs.forEach(name => {
                 const input = document.querySelector(`[name="${name}"]`);
                 if (input) {
                     input.addEventListener('input', updateCalculations);
                 }
             });
+
+            // PHQ-9 scoring
+            for (let i = 1; i <= 9; i++) {
+                const radios = document.querySelectorAll(`input[name="phq9_q${i}"]`);
+                radios.forEach(radio => {
+                    radio.addEventListener('change', updatePHQ9Score);
+                });
+            }
+
+            // GAD-7 scoring
+            for (let i = 1; i <= 7; i++) {
+                const radios = document.querySelectorAll(`input[name="gad7_q${i}"]`);
+                radios.forEach(radio => {
+                    radio.addEventListener('change', updateGAD7Score);
+                });
+            }
         });
         
         function changeStep(direction) {
@@ -299,11 +1449,38 @@
             // Collect form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
+
+            // Collect checkbox data
+            const exerciseTypes = [];
+            document.querySelectorAll('input[name="exerciseTypes"]:checked').forEach(cb => {
+                exerciseTypes.push(cb.value);
+            });
+            data.exerciseTypes = exerciseTypes;
+
+            // Collect ATM events
+            const atmEvents = [];
+            for (let i = 1; i <= atmEventCount; i++) {
+                const year = document.querySelector(`[name="atmYear_${i}"]`)?.value;
+                if (year) {
+                    atmEvents.push({
+                        year: year,
+                        age: document.querySelector(`[name="atmAge_${i}"]`)?.value,
+                        type: document.querySelector(`[name="atmType_${i}"]`)?.value,
+                        description: document.querySelector(`[name="atmDescription_${i}"]`)?.value,
+                        treatment: document.querySelector(`[name="atmTreatment_${i}"]`)?.value,
+                        currentImpact: document.querySelector(`[name="atmCurrentImpact_${i}"]`)?.value
+                    });
+                }
+            }
+            data.atmEvents = atmEvents;
             
             // Add calculated values
             data.calculatedBMI = document.getElementById('bmiValue').textContent;
             data.calculatedWHR = document.getElementById('whrValue').textContent;
             data.bpClassification = document.getElementById('bpClassification').textContent;
+            data.hrClassification = document.getElementById('hrClassification').textContent;
+            data.phq9Score = document.getElementById('phq9Score').textContent;
+            data.gad7Score = document.getElementById('gad7Score').textContent;
             
             // Store data and redirect
             sessionStorage.setItem('assessment_data', JSON.stringify(data));
@@ -313,67 +1490,24 @@
                 <div class="min-h-screen flex items-center justify-center bg-gray-50">
                     <div class="text-center">
                         <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Processing Your Assessment</h2>
-                        <p class="text-gray-600">Calculating biological age and disease risks...</p>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Processing Your Comprehensive Assessment</h2>
+                        <p class="text-gray-600 mb-2">Calculating biological age using 4 advanced algorithms...</p>
+                        <p class="text-gray-600 mb-2">Analyzing disease risk across 7 major categories...</p>
+                        <p class="text-gray-600 mb-2">Generating 14-section professional health report...</p>
+                        <div class="mt-4 bg-blue-50 rounded-lg p-4 inline-block">
+                            <p class="text-sm text-blue-800">
+                                <i class="fas fa-dna mr-2"></i>
+                                This comprehensive analysis includes over 60 biomarkers and advanced medical algorithms
+                            </p>
+                        </div>
                     </div>
                 </div>
             `;
             
             setTimeout(() => {
                 window.location.href = './comprehensive-report.html';
-            }, 3000);
+            }, 5000);
         });
     </script>
-
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background-color: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            transition: width 0.3s ease;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-        }
-        
-        .form-input, .form-select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        
-        .form-input:focus, .form-select:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        .assessment-step {
-            min-height: 400px;
-        }
-    </style>
 </body>
 </html>
